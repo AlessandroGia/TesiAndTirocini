@@ -19,7 +19,7 @@ export class HomeStudenteTesiPage implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  public tirocinio() {
+  public navigaTirocinio() {
     this.router.navigate(['/home-studente-tirocinio']);
   }
 

@@ -19,21 +19,11 @@
     
     <ion-card class="tCard" color="light">
       <ion-card-content class="tCardContent">
-        <h1 class="tTitle"><b>[Titolo Tesi di Laurea]</b></h1>
+        <h1 class="tTitle"><b>Laboratorio di Radiomica</b></h1>
         <br>
-        <b>Ingegneria del Software</b> <br>
         <b>CdL: Informatica</b> <br>
-        <b>Relatore: Prof. Fausto Fasano</b> <br>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card class="tCard" color="light">
-      <ion-card-content class="tCardContent">
-        <h1 class="tTitle"><b>[Titolo Tesi di Laurea]</b></h1>
-        <br>
-        <b>Logica e Fondamenti di Informatica</b> <br>
-        <b>CdL: Informatica</b> <br>
-        <b>Relatore: Prof. Antonella Santone</b> <br>
+        <b>Tutor: Prof. Antonella Santone</b> <br>
+        <b>Completamento: 36/160 ore</b> <br>
       </ion-card-content>
     </ion-card>
 
@@ -48,7 +38,7 @@
 <ion-toolbar>
   <ion-tabs>
     <ion-tab-bar class="lowerToolbar" slot="bottom">
-      <ion-tab-button class="homeStudenteTabBarTesi" tab="tesi">
+      <ion-tab-button (click)="navigaTesi()" class="homeStudenteTabBarTesi" tab="tesi">
         <ion-icon class="homeStudenteLowerIconsTesi" name="book-outline"></ion-icon>
         <b>Tesi</b>
       </ion-tab-button>
