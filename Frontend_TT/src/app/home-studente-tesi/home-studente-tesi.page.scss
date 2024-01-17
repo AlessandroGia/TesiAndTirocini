@@ -1,0 +1,80 @@
+.homeStudenteTesiTitle {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: xx-large;
+    color: white;
+}
+
+.homeStudenteTesiContent {
+    --ion-background-color: #012D5E
+}
+
+ion-toolbar {
+    --background: #012D5E
+}
+
+.mainDiv {
+    position: relative;
+}
+
+.logOut {
+    margin-top: 20%;
+    --background: #012D5E;
+    color: #ffffff;
+    width: 2.5em;
+    height: 2.5em;
+}
+
+.logOutButtons {
+    margin-left: 3%;
+}
+
+.nuovaTesi {
+    margin-top:20%;
+    --background: #012D5E;
+    color: #ffffff;
+    width: 2.5em;
+    height: 2.5em;
+}
+
+.nuovaTesiButtons {
+    margin-right: 3%;
+}
+
+ion-icon {
+    --background: #012D5E;
+    color: #ffffff;
+    width: 2.5em;
+    height: 2.5em;
+}
+
+.unimolLogoDiv {
+    margin: auto;
+    width: 50%;
+    padding-top: 5%;
+    padding-bottom: 7%;
+}
+
+.unimolLogo {
+    margin: auto;
+    position: relative;
+    width: 80%;
+    height: 80%;
+}
+
+.tesiCard {
+    background-color: #CAEF23;
+    color: #012D5E;   
+}
+
+.tesiCardContent {
+    font-size: 150%;
+}
+
+.tesiCardP {
+    font-size: 90%;
+}
+
+.giornoTitle {
+    text-align: center;
+}
