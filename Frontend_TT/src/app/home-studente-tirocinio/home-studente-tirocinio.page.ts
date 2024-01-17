@@ -3,11 +3,11 @@ import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-home-studente-tesi',
-  templateUrl: './home-studente-tesi.page.html',
-  styleUrls: ['./home-studente-tesi.page.scss'],
+  selector: 'app-home-studente-tirocinio',
+  templateUrl: './home-studente-tirocinio.page.html',
+  styleUrls: ['./home-studente-tirocinio.page.scss'],
 })
-export class HomeStudenteTesiPage implements OnInit {
+export class HomeStudenteTirocinioPage implements OnInit {
 
   constructor(public navCtrl: NavController,
     private router: Router) { }
@@ -20,7 +20,7 @@ export class HomeStudenteTesiPage implements OnInit {
   }
 
   public tirocinio() {
-    this.router.navigate(['/home-studente-tirocinio']);
+    this.router.navigate(['/home-studente-tesi']);
   }
 
 }

@@ -40,4 +40,12 @@ export class LoginPage implements OnInit {
     this.backButtonSubscription.unsubscribe();
   }
 
+  public accedi() {
+    if (this.userName === "Interno" || this.userName === "interno") {
+      this.router.navigate(['/home-interno-tesi']);
+    } else {
+      this.router.navigate(['/home-studente-tesi']);
+    }
+  }
+
 }
