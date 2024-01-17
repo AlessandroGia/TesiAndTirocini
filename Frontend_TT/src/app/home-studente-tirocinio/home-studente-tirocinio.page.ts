@@ -16,10 +16,12 @@ export class HomeStudenteTirocinioPage implements OnInit {
   }
 
   public logOut() {
+    this.navCtrl.setDirection('back');
     this.router.navigate(['/login']);
   }
 
   public navigaTesi() {
+    this.navCtrl.setDirection('back');
     this.router.navigate(['/home-studente-tesi']);
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { IonRouterOutlet, Platform } from '@ionic/angular';
 
@@ -20,7 +21,8 @@ export class LoginPage implements OnInit {
   constructor(private router: Router,
     private alertController: AlertController,
     private routerOutlet: IonRouterOutlet,
-    private platform: Platform) { }
+    private platform: Platform,
+    public navCtrl: NavController) { }
 
   ngOnInit() {}
 
@@ -41,6 +43,7 @@ export class LoginPage implements OnInit {
   }
 
   public accedi() {
+    this.navCtrl.setDirection('forward');
     if (this.userName === "Interno" || this.userName === "interno") {
       this.router.navigate(['/home-interno-tesi']);
     } else {
