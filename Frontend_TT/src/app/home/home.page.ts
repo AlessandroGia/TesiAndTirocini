@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { SelectMultipleControlValueAccessor } from '@angular/forms';
+import { Route, Router } from '@angular/router';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +10,10 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private router: Router) {
+    setTimeout(function(){
+      router.navigate(['/login']);
+    }, 3000);
+  }
 
 }
