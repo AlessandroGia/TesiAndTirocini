@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-studente-tirocinio',
@@ -9,20 +8,17 @@ import { Router } from '@angular/router';
 })
 export class HomeStudenteTirocinioPage implements OnInit {
 
-  constructor(public navCtrl: NavController,
-    private router: Router) { }
+  constructor(public navCtrl: NavController) { }
 
   ngOnInit() {
   }
 
   public logOut() {
-    this.navCtrl.setDirection('back');
-    this.router.navigate(['/login']);
+    this.navCtrl.navigateBack(['/login']);
   }
 
   public navigaTesi() {
-    this.navCtrl.setDirection('back');
-    this.router.navigate(['/home-studente-tesi']);
+    this.navCtrl.navigateBack(['/home-studente-tesi']);
   }
 
 }

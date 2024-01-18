@@ -1,0 +1,49 @@
+ion-toolbar {
+    --background: #012D5E
+}
+
+.nuovaTesiTitle {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: xx-large;
+    color: white;
+}
+
+.userInput {
+    padding-left: 12%;
+    padding-right: 17%;
+}
+
+.back {
+    --background: #012D5E;
+    color: #ffffff;
+}
+
+.mainDiv {
+    position: relative;
+}
+
+.nuovaTesiContent {
+    --ion-background-color: #012D5E
+}
+
+.buttonDiv {
+    padding-top: 10%;
+    width: 70%;
+    margin: auto;
+}
+
+.creaButton {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    --color: #012D5E;
+    --background: #CAEF23;
+    --background-activated: #ffffff;
+}
+
+.titolo {
+    padding-top: 5%;
+    color: #CAEF23;
+    text-align: left;
+}

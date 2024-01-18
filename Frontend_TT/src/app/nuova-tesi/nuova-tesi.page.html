@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="back" defaultHref="home-studente-tesi"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <h1 class="nuovaTesiTitle"><b>NUOVA TESI</b></h1>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="nuovaTesiContent" fullscreen="true">
+  <div class="mainDiv">
+    <div class="userInput">
+      <h3 class="titolo"><b>TITOLO</b></h3>
+      <ion-item>
+        <ion-input color="light" [clearInput]="true"></ion-input>
+      </ion-item>
+
+      <h3 class="titolo"><b>INSEGNAMENTO*</b></h3>
+      <ion-item>
+        <ion-input color="light" [clearInput]="true"></ion-input>
+      </ion-item>
+
+      <h3 class="titolo"><b>RELATORE*</b></h3>
+      <ion-item>
+        <ion-input color="light" [clearInput]="true"></ion-input>
+      </ion-item>
+
+      <h3 class="titolo"><b>CORRELATORI</b></h3>
+      <ion-item>
+        <ion-input color="light" [clearInput]="true"></ion-input>
+      </ion-item>
+      
+    </div>
+
+    <div class="buttonDiv">
+      <ion-button class="creaButton"><b>CREA</b></ion-button>
+    </div>
+  </div>
+</ion-content>

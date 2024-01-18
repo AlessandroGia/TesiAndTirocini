@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
-import { AlertController } from '@ionic/angular';
 import { IonRouterOutlet, Platform } from '@ionic/angular';
 
 @Component({
@@ -18,9 +16,7 @@ export class LoginPage implements OnInit {
   // Variabile utilizzata per la disattivazione del backButton dell'hardware
   private backButtonSubscription: any;
 
-  constructor(private router: Router,
-    private alertController: AlertController,
-    private routerOutlet: IonRouterOutlet,
+  constructor(private routerOutlet: IonRouterOutlet,
     private platform: Platform,
     public navCtrl: NavController) { }
 
@@ -43,11 +39,10 @@ export class LoginPage implements OnInit {
   }
 
   public accedi() {
-    this.navCtrl.setDirection('forward');
     if (this.userName === "Interno" || this.userName === "interno") {
-      this.router.navigate(['/home-interno-tesi']);
+      this.navCtrl.navigateForward(['/home-interno-tesi']);
     } else {
-      this.router.navigate(['/home-studente-tesi']);
+      this.navCtrl.navigateForward(['/home-studente-tesi']);
     }
   }
 

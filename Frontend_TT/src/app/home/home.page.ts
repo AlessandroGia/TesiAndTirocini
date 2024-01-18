@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { SelectMultipleControlValueAccessor } from '@angular/forms';
-import { Route, Router } from '@angular/router';
-import { timer } from 'rxjs';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +8,9 @@ import { timer } from 'rxjs';
 })
 export class HomePage {
 
-  constructor(private router: Router) {
+  constructor(private navCtrl: NavController) {
     setTimeout(function(){
-      router.navigate(['/login']);
+      navCtrl.navigateForward(['/login']);
     }, 3000);
   }
 

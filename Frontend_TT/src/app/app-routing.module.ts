@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'home-studente-tirocinio',
     loadChildren: () => import('./home-studente-tirocinio/home-studente-tirocinio.module').then( m => m.HomeStudenteTirocinioPageModule)
   },
+  {
+    path: 'nuova-tesi',
+    loadChildren: () => import('./nuova-tesi/nuova-tesi.module').then( m => m.NuovaTesiPageModule)
+  },
 ];
 
 @NgModule({
