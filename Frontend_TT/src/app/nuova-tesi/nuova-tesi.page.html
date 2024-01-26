@@ -18,9 +18,22 @@
       </ion-item>
 
       <h3 class="titolo"><b>INSEGNAMENTO*</b></h3>
-      <ion-item>
-        <ion-input color="light" [clearInput]="true"></ion-input>
+      <ion-item [button]="true" [detail]="false" id="selezioneInsegnamento">
+        <ion-input color="light" [readonly]="true">{{ selectedFruitsText }}</ion-input>
       </ion-item>
+
+      <ion-modal trigger="selezioneInsegnamento" #modal>
+        <ng-template>
+          <app-typeahead
+            class="ion-page"
+            title="Favorite Fruits"
+            [items]="fruits"
+            [selectedItems]="selectedFruits"
+            (selectionChange)="fruitSelectionChanged($event)"
+            (selectionCancel)="modal.dismiss()"
+          ></app-typeahead>
+        </ng-template>
+      </ion-modal>
 
       <h3 class="titolo"><b>RELATORE*</b></h3>
       <ion-item>
