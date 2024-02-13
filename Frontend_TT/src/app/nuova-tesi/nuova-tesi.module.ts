@@ -13,7 +13,7 @@ import { NuovaTesiPage } from './nuova-tesi.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    NuovaTesiPageRoutingModule
+    NuovaTesiPageRoutingModule,
   ],
   declarations: [NuovaTesiPage]
 })
