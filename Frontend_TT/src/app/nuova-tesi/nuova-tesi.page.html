@@ -39,3 +39,16 @@
     </div>
   </div>
 </ion-content>
+
+<ion-modal trigger="selezioneInsegnamento" #modal>
+  <ng-template>
+    <app-typeahead
+      class="ion-page"
+      title="Favorite Fruits"
+      [items]="fruits"
+      [selectedItems]="selectedFruits"
+      (selectionChange)="fruitSelectionChanged($event)"
+      (selectionCancel)="modal.dismiss()"
+    ></app-typeahead>
+  </ng-template>
+</ion-modal>
