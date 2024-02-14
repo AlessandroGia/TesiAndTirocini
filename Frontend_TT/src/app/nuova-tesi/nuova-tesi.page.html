@@ -17,12 +17,41 @@
         <ion-input color="light" [clearInput]="true"></ion-input>
       </ion-item>
 
-      <h3 class="titolo"><b>INSEGNAMENTO*</b></h3>
-      <ion-item [button]="true" [detail]="false" id="selezioneInsegnamento">
-        <ion-input color="light" [readonly]="true">{{ selectedFruitsText }}</ion-input>
+      <h3 class="titolo"><b>INSEGNAMENTO *</b></h3>
+      <ion-item [button]="true" id="selezioneInsegnamento">
+        <ion-input color="light" [readonly]="true"></ion-input>
       </ion-item>
 
-      <h3 class="titolo"><b>RELATORE*</b></h3>
+      <ion-modal trigger="selezioneInsegnamento" #modal>
+        <ng-template>
+          <ion-header>
+            <ion-toolbar>
+              <ion-buttons slot="start">
+                <ion-button class="modalUpperButtons" (click)="cancel()">Annulla</ion-button>
+              </ion-buttons>
+              <ion-buttons slot="end">
+                <ion-button class="modalUpperButtons" (click)="confirm()">Fatto</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+            <ion-toolbar>
+              <h3 class="modalTitle"><b>SELEZIONA INSEGNAMENTO</b></h3>
+            </ion-toolbar>
+            <ion-toolbar>
+              <ion-searchbar [debounce]="500" (ionInput)="handleInput($event)" animated="true" placeholder="Cerca..."></ion-searchbar>
+            </ion-toolbar>
+          </ion-header>
+          
+          <ion-content class="nuovaTesiContent">
+            <ion-list id="modal-list" [inset]="true">
+              <ion-item *ngFor="let insegnamento of risultati">
+                <ion-checkbox [value]="insegnamento.id">{{ insegnamento.nome }}</ion-checkbox>
+              </ion-item>
+            </ion-list>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+
+      <h3 class="titolo"><b>RELATORE *</b></h3>
       <ion-item>
         <ion-input color="light" [clearInput]="true"></ion-input>
       </ion-item>
@@ -39,16 +68,3 @@
     </div>
   </div>
 </ion-content>
-
-<ion-modal trigger="selezioneInsegnamento" #modal>
-  <ng-template>
-    <app-typeahead
-      class="ion-page"
-      title="Favorite Fruits"
-      [items]="fruits"
-      [selectedItems]="selectedFruits"
-      (selectionChange)="fruitSelectionChanged($event)"
-      (selectionCancel)="modal.dismiss()"
-    ></app-typeahead>
-  </ng-template>
-</ion-modal>

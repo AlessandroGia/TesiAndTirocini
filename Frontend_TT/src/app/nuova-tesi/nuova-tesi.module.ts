@@ -15,6 +15,6 @@ import { NuovaTesiPage } from './nuova-tesi.page';
     IonicModule,
     NuovaTesiPageRoutingModule,
   ],
-  declarations: [NuovaTesiPage]
+  declarations: [NuovaTesiPage],
 })
 export class NuovaTesiPageModule {}
