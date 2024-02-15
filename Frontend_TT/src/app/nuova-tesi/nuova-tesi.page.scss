@@ -4,9 +4,14 @@ ion-toolbar {
 
 ion-searchbar {
     --background: #ffffff;
-    --color: #000;
-    --icon-color: #000
-    --clear-button-color: #000;
+    --color: #012D5E;
+    --icon-color: #012D5E;
+    --clear-button-color: #012D5E;
+}
+
+ion-input {
+    --color: #ffffff;
+    --placeholder-color: #ffffff;
 }
 
 .nuovaTesiTitle {
@@ -14,6 +19,14 @@ ion-searchbar {
     text-align: center;
     font-size: xx-large;
     color: white;
+}
+
+.item {
+    --color: #ffffff;
+}
+
+.radio {
+    --color-checked: #CAEF23;
 }
 
 .userInput {
@@ -41,7 +54,7 @@ ion-searchbar {
 .modalTitle {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    color: white;
+    color: #CAEF23;
 }
 
 .buttonDiv {

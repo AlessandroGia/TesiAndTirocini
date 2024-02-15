@@ -19,47 +19,109 @@
 
       <h3 class="titolo"><b>INSEGNAMENTO *</b></h3>
       <ion-item [button]="true" id="selezioneInsegnamento">
-        <ion-input color="light" [readonly]="true"></ion-input>
+        <ion-input color="light" [readonly]="true" [placeholder]="insegnamentoSelezionato"></ion-input>
       </ion-item>
 
-      <ion-modal trigger="selezioneInsegnamento" #modal>
+      <ion-modal trigger="selezioneInsegnamento" #modalInsegnamento>
         <ng-template>
           <ion-header>
             <ion-toolbar>
               <ion-buttons slot="start">
-                <ion-button class="modalUpperButtons" (click)="cancel()">Annulla</ion-button>
+                <ion-button class="modalUpperButtons" (click)="cancelInsegnamento()">Annulla</ion-button>
               </ion-buttons>
               <ion-buttons slot="end">
-                <ion-button class="modalUpperButtons" (click)="confirm()">Fatto</ion-button>
+                <ion-button class="modalUpperButtons" (click)="confirmInsegnamento()">Fatto</ion-button>
               </ion-buttons>
             </ion-toolbar>
             <ion-toolbar>
               <h3 class="modalTitle"><b>SELEZIONA INSEGNAMENTO</b></h3>
             </ion-toolbar>
             <ion-toolbar>
-              <ion-searchbar [debounce]="500" (ionInput)="handleInput($event)" animated="true" placeholder="Cerca..."></ion-searchbar>
+              <ion-searchbar [debounce]="500" (ionInput)="handleInputI($event)" animated="true" placeholder="Cerca..."></ion-searchbar>
             </ion-toolbar>
           </ion-header>
           
           <ion-content class="nuovaTesiContent">
             <ion-list id="modal-list" [inset]="true">
-              <ion-item *ngFor="let insegnamento of risultati">
-                <ion-checkbox [value]="insegnamento.id">{{ insegnamento.nome }}</ion-checkbox>
-              </ion-item>
+              <ion-radio-group [(ngModel)]="insegnamentoSelezionato">
+                <ion-item class="item" *ngFor="let insegnamento of ricercaInsegnamenti">
+                  <ion-radio class="radio" [value]="insegnamento.nome">{{ insegnamento.nome }}</ion-radio>
+                </ion-item>
+            </ion-radio-group>
             </ion-list>
           </ion-content>
         </ng-template>
       </ion-modal>
 
       <h3 class="titolo"><b>RELATORE *</b></h3>
-      <ion-item>
-        <ion-input color="light" [clearInput]="true"></ion-input>
+      <ion-item [button]="true" id="selezioneRelatore">
+        <ion-input color="light" [readonly]="true" [placeholder]="relatoreSelezionato"></ion-input>
       </ion-item>
 
+      <ion-modal trigger="selezioneRelatore" #modalRelatore>
+        <ng-template>
+          <ion-header>
+            <ion-toolbar>
+              <ion-buttons slot="start">
+                <ion-button class="modalUpperButtons" (click)="cancelRelatore()">Annulla</ion-button>
+              </ion-buttons>
+              <ion-buttons slot="end">
+                <ion-button class="modalUpperButtons" (click)="confirmRelatore()">Fatto</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+            <ion-toolbar>
+              <h3 class="modalTitle"><b>SELEZIONA RELATORE</b></h3>
+            </ion-toolbar>
+            <ion-toolbar>
+              <ion-searchbar [debounce]="500" (ionInput)="handleInputR($event)" animated="true" placeholder="Cerca..."></ion-searchbar>
+            </ion-toolbar>
+          </ion-header>
+          
+          <ion-content class="nuovaTesiContent">
+            <ion-list id="modal-list" [inset]="true">
+              <ion-radio-group [(ngModel)]="relatoreSelezionato">
+                <ion-item class="item" *ngFor="let docente of ricercaDocenti">
+                  <ion-radio class="radio" [value]="docente.nome">{{ docente.nome }}</ion-radio>
+                </ion-item>
+            </ion-radio-group>
+            </ion-list>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+
       <h3 class="titolo"><b>CORRELATORI</b></h3>
-      <ion-item>
-        <ion-input color="light" [clearInput]="true"></ion-input>
+      <ion-item [button]="true" id="selezioneCorrelatori">
+        <ion-input color="light" [readonly]="true" [placeholder]=""></ion-input>
       </ion-item>
+
+      <ion-modal trigger="selezioneCorrelatori" #modalCorrelatori>
+        <ng-template>
+          <ion-header>
+            <ion-toolbar>
+              <ion-buttons slot="start">
+                <ion-button class="modalUpperButtons" (click)="cancelCorrelatori()">Annulla</ion-button>
+              </ion-buttons>
+              <ion-buttons slot="end">
+                <ion-button class="modalUpperButtons" (click)="confirmCorrelatori()">Fatto</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+            <ion-toolbar>
+              <h3 class="modalTitle"><b>SELEZIONA CORRELATORI</b></h3>
+            </ion-toolbar>
+            <ion-toolbar>
+              <ion-searchbar [debounce]="500" (ionInput)="handleInputC($event)" animated="true" placeholder="Cerca..."></ion-searchbar>
+            </ion-toolbar>
+          </ion-header>
+          
+          <ion-content class="nuovaTesiContent">
+            <ion-list id="modal-list" [inset]="true">
+              <ion-item class="item" *ngFor="let interno of ricercaInterni">
+                <ion-checkbox class="radio" [value]="interno.nome">{{ interno.nome }}</ion-checkbox>
+              </ion-item>
+            </ion-list>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
       
     </div>
 
