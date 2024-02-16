@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonModal } from '@ionic/angular';
+import { IonModal, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-nuova-tesi',
@@ -19,6 +19,7 @@ export class NuovaTesiPage implements OnInit {
 
   correlatoriSelezionati: string[] = [];
   private vecchiCorrelatori: string[] = [];
+  correlatori: string = "";
 
   insegnamenti: any[] = [
     { id: 1, nome: 'Ingegneria del Software' },
@@ -53,7 +54,7 @@ export class NuovaTesiPage implements OnInit {
   ricercaDocenti: any[] = [...this.docenti];
   ricercaInterni: any[] = [...this.interni];
 
-  constructor() { }
+  constructor(private navCtrl: NavController) { }
 
   ngOnInit() {
   }
@@ -71,7 +72,7 @@ export class NuovaTesiPage implements OnInit {
   }
 
   cancelCorrelatori() {
-    this.correlatoriSelezionati = this.vecchiCorrelatori;
+    this.correlatoriSelezionati = [...this.vecchiCorrelatori];
     this.ricercaInterni = [...this.interni];
     this.modalCorrelatori.dismiss(null, 'cancel');
   }
@@ -89,7 +90,15 @@ export class NuovaTesiPage implements OnInit {
   }
 
   confirmCorrelatori() {
-    this.vecchiCorrelatori = this.correlatoriSelezionati;
+    if (this.correlatoriSelezionati.length === 0) {
+      this.correlatori = "";
+    } else if (this.correlatoriSelezionati.length === 1) {
+      this.correlatori = this.correlatoriSelezionati[0];
+    } else {
+      this.correlatori = this.correlatoriSelezionati.length + " correlatori selezionati";
+    }
+
+    this.vecchiCorrelatori = [...this.correlatoriSelezionati];
     this.ricercaInterni = [...this.interni];
     this.modalCorrelatori.dismiss(null, 'confirm');
   }
@@ -106,6 +115,25 @@ export class NuovaTesiPage implements OnInit {
 
   handleInputC(event: any) {
     const query = event.target.value.toLowerCase();
-    this.ricercaDocenti = this.docenti.filter((d) => d.nome.toLowerCase().indexOf(query) > -1);
+    this.ricercaInterni = this.interni.filter((d) => d.nome.toLowerCase().indexOf(query) > -1);
+  }
+
+  gestisciCheckbox(event: any, nome: string) {
+    if (event.target.checked) {
+      if (this.correlatoriSelezionati.length < 3) {
+        this.correlatoriSelezionati.push(nome);
+      } else {
+        event.target.checked = false;
+      }
+    } else {
+      const index = this.correlatoriSelezionati.indexOf(nome);
+      if (index !== -1) {
+        this.correlatoriSelezionati.splice(index, 1);
+      }
+    }
+  }
+
+  navigaTesi() {
+    this.navCtrl.navigateForward(['/home-studente-tesi']);
   }
 }

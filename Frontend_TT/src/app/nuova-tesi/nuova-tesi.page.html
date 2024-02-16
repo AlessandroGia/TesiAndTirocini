@@ -91,7 +91,7 @@
 
       <h3 class="titolo"><b>CORRELATORI</b></h3>
       <ion-item [button]="true" id="selezioneCorrelatori">
-        <ion-input color="light" [readonly]="true" [placeholder]=""></ion-input>
+        <ion-input color="light" [readonly]="true" [placeholder]="correlatori"></ion-input>
       </ion-item>
 
       <ion-modal trigger="selezioneCorrelatori" #modalCorrelatori>
@@ -116,7 +116,7 @@
           <ion-content class="nuovaTesiContent">
             <ion-list id="modal-list" [inset]="true">
               <ion-item class="item" *ngFor="let interno of ricercaInterni">
-                <ion-checkbox class="radio" [value]="interno.nome">{{ interno.nome }}</ion-checkbox>
+                <ion-checkbox [value]="interno.nome" (ionChange)="gestisciCheckbox($event, interno.nome)" [checked]="correlatoriSelezionati.includes(interno.nome)">{{ interno.nome }}</ion-checkbox>
               </ion-item>
             </ion-list>
           </ion-content>
@@ -126,7 +126,7 @@
     </div>
 
     <div class="buttonDiv">
-      <ion-button class="creaButton"><b>CREA</b></ion-button>
+      <ion-button class="creaButton" (click)="navigaTesi()"><b>CREA</b></ion-button>
     </div>
   </div>
 </ion-content>
