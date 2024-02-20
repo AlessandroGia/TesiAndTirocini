@@ -1,0 +1,99 @@
+.visualizzazioneTesiTitle {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: xx-large;
+    color: white;
+}
+
+
+
+.visualizzazioneTesiContent {
+    --ion-background-color: #012D5E
+}
+
+.item {
+    --color: #ffffff;
+}
+
+.mainDiv {
+    position: relative;
+}
+
+.titolo {
+    padding-top: 5%;
+    color: #CAEF23;
+    text-align: left;
+}
+
+ion-toolbar {
+    --background: #012D5E
+}
+
+
+.item {
+    --color: #ffffff;
+}
+
+
+.userInput {
+    padding-left: 12%;
+    padding-right: 17%;
+}
+
+.back {
+    --background: #012D5E;
+    color: #ffffff;
+}
+
+.mainDiv {
+    position: relative;
+}
+
+.buttonDiv {
+    padding-top: 5%;
+    width: 70%;
+    margin: auto;
+}
+
+.creaButton {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    --color: #012D5E;
+    --background: #CAEF23;
+    --background-activated: #ffffff;
+}
+
+#buttons {
+    padding-top: 5%; 
+    padding-bottom: 5%;
+}
+
+.buttonDiv {
+    padding-top: 1%;
+    width: 70%;
+    margin: auto;
+}
+
+.correlatore {
+    width: 100%;
+}
+
+.nomeCorrelatore{
+    width: 90%;
+    float: left;
+}
+
+.eliminaCorrelatore {
+    position: right;
+    float: right;
+}
+
+
+#present-titolo-alert {
+    margin-left: 2%;
+}
+
+#present-correlatori-alert {
+    margin-left: 2%;
+}

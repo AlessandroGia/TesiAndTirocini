@@ -1,0 +1,64 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="back" defaultHref="home-studente-tesi"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <h1 class="visualizzazioneTesiTitle"><b>VISUALIZZAZIONE TESI</b></h1>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="visualizzazioneTesiContent" fullscreen="true">
+  <div class="mainDiv">
+    <div class="userInput">
+      <h3 class="titolo"><b>TITOLO</b>
+      <ion-icon id="present-titolo-alert" name="pencil-outline"  (click)="presentTitoloAlert()"></ion-icon></h3>
+      <ion-item>
+        {{this.titolo}}
+      </ion-item>
+
+      <h3 class="titolo"><b>INSEGNAMENTO</b></h3>
+      <ion-item id="insegnamento">
+        {{this.insegnamento}}
+      </ion-item>
+
+      <h3 class="titolo"><b>CORSO DI STUDI</b></h3>
+      <ion-item id="corsoDiStudi">
+        {{this.corsoDiStudi}}
+      </ion-item>
+
+      <h3 class="titolo"><b>RELATORE</b></h3>
+      <ion-item id="relatore">
+        {{this.relatore}}
+      </ion-item>
+
+      <h3 class="titolo"><b>CORRELATORE/I</b>
+        <ion-icon id="present-correlatori-alert" name="add-circle" (click)="presentCorrelatoriAlert()"></ion-icon></h3>
+      <ion-item id="correlatori" *ngFor="let correlatore of correlatori">
+          <div class="correlatore">
+            <div class="nomeCorrelatore">{{correlatore}}</div>  <div class="eliminaCorrelatore"><ion-icon name="remove-circle" (click)="elminaCorrelatore(correlatore)"></ion-icon></div>
+          </div>
+      </ion-item>
+
+      <h3 class="titolo"><b>DATA DISCUSSIONE</b></h3>
+      <ion-item id="dataDiscussione">
+        {{this.dataDiscussione}}
+      </ion-item>
+
+      <h3 class="titolo"><b>ALLEGATI ></b></h3>
+
+    </div>
+
+    <div id="buttons">
+      <div class="buttonDiv">
+        <ion-button class="creaButton" (click)="presentConcludiTesi()"><b>TESI CONCLUSA</b></ion-button>
+      </div>
+      <div class="buttonDiv">
+        <ion-button class="creaButton" (click)="presentEliminaTesi()"><b>ELIMINA TESI</b></ion-button>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

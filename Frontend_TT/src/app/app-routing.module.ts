@@ -27,6 +27,11 @@ const routes: Routes = [
     path: 'nuova-tesi',
     loadChildren: () => import('./nuova-tesi/nuova-tesi.module').then( m => m.NuovaTesiPageModule)
   },
+  {
+    path: 'visualizzazione-tesi',
+    loadChildren: () => import('./visualizzazione-tesi/visualizzazione-tesi.module').then( m => m.VisualizzazioneTesiPageModule)
+  },
+
 ];
 
 @NgModule({
