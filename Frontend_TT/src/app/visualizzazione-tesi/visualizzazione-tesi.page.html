@@ -34,13 +34,39 @@
         {{this.relatore}}
       </ion-item>
 
-      <h3 class="titolo"><b>CORRELATORE/I</b>
-        <ion-icon id="present-correlatori-alert" name="add-circle" (click)="presentCorrelatoriAlert()"></ion-icon></h3>
-      <ion-item id="correlatori" *ngFor="let correlatore of correlatori">
-          <div class="correlatore">
-            <div class="nomeCorrelatore">{{correlatore}}</div>  <div class="eliminaCorrelatore"><ion-icon name="remove-circle" (click)="elminaCorrelatore(correlatore)"></ion-icon></div>
-          </div>
+      <h3 class="titolo"><b>CORRELATORI</b></h3>
+      <ion-item [button]="true" id="selezioneCorrelatori">
+        <ion-input color="light" [readonly]="true" [placeholder]="correlatori"></ion-input>
       </ion-item>
+
+      <ion-modal trigger="selezioneCorrelatori" #modalCorrelatori>
+        <ng-template>
+          <ion-header>
+            <ion-toolbar>
+              <ion-buttons slot="start">
+                <ion-button class="modalUpperButtons" (click)="cancelCorrelatori()">Annulla</ion-button>
+              </ion-buttons>
+              <ion-buttons slot="end">
+                <ion-button class="modalUpperButtons" (click)="confirmCorrelatori()">Fatto</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+            <ion-toolbar>
+              <h3 class="modalTitle"><b>SELEZIONA CORRELATORI</b></h3>
+            </ion-toolbar>
+            <ion-toolbar>
+              <ion-searchbar [debounce]="500" (ionInput)="handleInputC($event)" animated="true" placeholder="Cerca..."></ion-searchbar>
+            </ion-toolbar>
+          </ion-header>
+          
+          <ion-content class="nuovaTesiContent">
+            <ion-list id="modal-list" [inset]="true">
+              <ion-item class="item" *ngFor="let interno of ricercaInterni">
+                <ion-checkbox [value]="interno.nome" (ionChange)="gestisciCheckbox($event, interno.nome)" [checked]="correlatoriSelezionati.includes(interno.nome)">{{ interno.nome }}</ion-checkbox>
+              </ion-item>
+            </ion-list>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
 
       <h3 class="titolo"><b>DATA DISCUSSIONE</b></h3>
       <ion-item id="dataDiscussione">
