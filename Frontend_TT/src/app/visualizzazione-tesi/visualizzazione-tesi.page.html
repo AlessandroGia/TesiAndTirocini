@@ -14,29 +14,29 @@
   <div class="mainDiv">
     <div class="userInput">
       <h3 class="titolo"><b>TITOLO</b>
-      <ion-icon id="present-titolo-alert" name="pencil-outline"  (click)="presentTitoloAlert()"></ion-icon></h3>
-      <ion-item>
-        {{this.titolo}}
+      <ion-icon id="present-titolo-alert" name="pencil-outline"></ion-icon></h3>
+      <ion-item (click)="presentTitoloAlert()">
+        <ion-input color="light" [clearInput]="true" placeholder="Nessun titolo" [value]="titolo" [readonly]="true"></ion-input>
       </ion-item>
 
       <h3 class="titolo"><b>INSEGNAMENTO</b></h3>
       <ion-item id="insegnamento">
-        {{this.insegnamento}}
+        <ion-input color="light" [clearInput]="true" [value]="insegnamento" [readonly]="true"></ion-input>
       </ion-item>
 
       <h3 class="titolo"><b>CORSO DI STUDI</b></h3>
       <ion-item id="corsoDiStudi">
-        {{this.corsoDiStudi}}
+        <ion-input color="light" [clearInput]="true" [value]="corsoDiStudi" [readonly]="true"></ion-input>
       </ion-item>
 
       <h3 class="titolo"><b>RELATORE</b></h3>
       <ion-item id="relatore">
-        {{this.relatore}}
+        <ion-input color="light" [clearInput]="true" [value]="relatore" [readonly]="true"></ion-input>
       </ion-item>
 
-      <h3 class="titolo"><b>CORRELATORI</b></h3>
+      <h3 class="titolo"><b>CORRELATORI</b><ion-icon id="present-titolo-alert" name="pencil-outline"></ion-icon></h3>
       <ion-item [button]="true" id="selezioneCorrelatori">
-        <ion-input color="light" [readonly]="true" [placeholder]="correlatori"></ion-input>
+        <ion-input color="light" [clearInput]="true" placeholder="0 correlatori selezionati" [value]="correlatori" [readonly]="true"></ion-input>
       </ion-item>
 
       <ion-modal trigger="selezioneCorrelatori" #modalCorrelatori>

@@ -14,12 +14,12 @@
     <div class="userInput">
       <h3 class="titolo"><b>TITOLO</b></h3>
       <ion-item>
-        <ion-input color="light" [clearInput]="true"></ion-input>
+        <ion-input color="light" [clearInput]="true" placeholder="Inserire titolo"></ion-input>
       </ion-item>
 
       <h3 class="titolo"><b>INSEGNAMENTO *</b></h3>
       <ion-item [button]="true" id="selezioneInsegnamento">
-        <ion-input color="light" [readonly]="true" [placeholder]="insegnamentoSelezionato"></ion-input>
+        <ion-input color="light" [clearInput]="true" placeholder="Inserire insegnamento" [value]="insegnamentoSelezionato" [readonly]="true"></ion-input>
       </ion-item>
 
       <ion-modal trigger="selezioneInsegnamento" #modalInsegnamento>
@@ -55,7 +55,7 @@
 
       <h3 class="titolo"><b>RELATORE *</b></h3>
       <ion-item [button]="true" id="selezioneRelatore">
-        <ion-input color="light" [readonly]="true" [placeholder]="relatoreSelezionato"></ion-input>
+        <ion-input color="light" [clearInput]="true" placeholder="Inserire relatore" [value]="relatoreSelezionato" [readonly]="true"></ion-input>
       </ion-item>
 
       <ion-modal trigger="selezioneRelatore" #modalRelatore>
@@ -91,7 +91,7 @@
 
       <h3 class="titolo"><b>CORRELATORI</b></h3>
       <ion-item [button]="true" id="selezioneCorrelatori">
-        <ion-input color="light" [readonly]="true" [placeholder]="correlatori"></ion-input>
+        <ion-input color="light" [clearInput]="true" placeholder="0 correlatori selezionati" [value]="correlatori" [readonly]="true"></ion-input>
       </ion-item>
 
       <ion-modal trigger="selezioneCorrelatori" #modalCorrelatori>

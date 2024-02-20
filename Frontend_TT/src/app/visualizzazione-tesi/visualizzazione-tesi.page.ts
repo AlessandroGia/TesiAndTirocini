@@ -28,15 +28,19 @@ export class VisualizzazioneTesiPage implements OnInit {
 
   ricercaInterni: any[] = [...this.interni];
 
-  cancelCorrelatori() {
-    this.correlatoriSelezionati = [...this.vecchiCorrelatori];
-    this.ricercaInterni = [...this.interni];
-    this.modalCorrelatori.dismiss(null, 'cancel');
-  }
-
   correlatoriSelezionati: string[] = [];
   private vecchiCorrelatori: string[] = [];
   correlatori: string = "";
+
+  constructor(private alertController: AlertController) { 
+    this.correlatoriSelezionati = ['Giulio Garbi']
+    this.correlatori = this.boxCorrelatori()
+    this.titolo = "F1"
+    this.insegnamento = "Fluido Dinamica";
+    this.corsoDiStudi = "Ingegneria Meccanica"
+    this.relatore = "Fabio Fante"
+    this.dataDiscussione = "01/01/2022"
+  }
 
   ngOnInit() {
     
@@ -52,6 +56,12 @@ export class VisualizzazioneTesiPage implements OnInit {
     }
   }
 
+  cancelCorrelatori() {
+    this.correlatoriSelezionati = [...this.vecchiCorrelatori];
+    this.ricercaInterni = [...this.interni];
+    this.modalCorrelatori.dismiss(null, 'cancel');
+  }
+
   confirmCorrelatori() {  
     this.correlatori = this.boxCorrelatori()
     this.vecchiCorrelatori = [...this.correlatoriSelezionati];
@@ -59,16 +69,7 @@ export class VisualizzazioneTesiPage implements OnInit {
     this.modalCorrelatori.dismiss(null, 'confirm');
   }
 
-  constructor(private alertController: AlertController) { 
-    
-    this.correlatoriSelezionati = ['Giulio Garbi']
-    this.correlatori = this.boxCorrelatori()
-    this.titolo = "F1"
-    this.insegnamento = "Fluido Dinamica";
-    this.corsoDiStudi = "Ingegneria Meccanica"
-    this.relatore = "Fabio Fante"
-    this.dataDiscussione = "01/01/2022"
-  }
+  
 
   handleInputC(event: any) {
     const query = event.target.value.toLowerCase();
@@ -102,7 +103,6 @@ export class VisualizzazioneTesiPage implements OnInit {
           text: 'OK',
           role: 'confirm',
           handler: (data: any) => {
-            console.log(data)
             this.cambiaTitolo(data.titolo)
           },
         },
