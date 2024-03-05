@@ -1,0 +1,61 @@
+ion-toolbar {
+    --background: #012D5E
+}
+
+.allegatiTitle {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: xx-large;
+    color: white;
+}
+
+.back {
+    --background: #012D5E;
+    color: #ffffff;
+}
+
+.allegatiContent {
+    --ion-background-color: #012D5E
+}
+
+.mainDiv {
+    position: relative;
+}
+
+.userInput {
+    padding-left: 12%;
+    padding-right: 17%;
+}
+
+.titolo {
+    padding-top: 5%;
+    color: #CAEF23;
+    text-align: left;
+}
+
+.buttonDiv {
+    padding-top: 1%;
+    width: 70%;
+    margin: auto;
+}
+
+#buttons {
+    padding-top: 5%; 
+    padding-bottom: 5%;
+    text-align: center;
+}
+
+.buttonDiv {
+    padding-top: 1%;
+    width: 70%;
+    margin: auto;
+}
+
+.creaButton {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    --color: #012D5E;
+    --background: #CAEF23;
+    --background-activated: #ffffff;
+}

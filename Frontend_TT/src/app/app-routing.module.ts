@@ -30,7 +30,19 @@ const routes: Routes = [
   {
     path: 'visualizzazione-tesi',
     loadChildren: () => import('./visualizzazione-tesi/visualizzazione-tesi.module').then( m => m.VisualizzazioneTesiPageModule)
+  },  {
+    path: 'allegati-tesi-tirocini',
+    loadChildren: () => import('./allegati-tesi-tirocini/allegati-tesi-tirocini.module').then( m => m.AllegatiTesiTirociniPageModule)
   },
+  {
+    path: 'visualizzazione-allegato',
+    loadChildren: () => import('./visualizzazione-allegato/visualizzazione-allegato.module').then( m => m.VisualizzazioneAllegatoPageModule)
+  },
+  {
+    path: 'creazione-allegato',
+    loadChildren: () => import('./creazione-allegato/creazione-allegato.module').then( m => m.CreazioneAllegatoPageModule)
+  },
+
 
 ];
 

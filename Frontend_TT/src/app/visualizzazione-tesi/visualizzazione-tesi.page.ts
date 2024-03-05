@@ -1,3 +1,4 @@
+import { state } from '@angular/animations';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { IonModal, NavController } from '@ionic/angular';
@@ -32,7 +33,7 @@ export class VisualizzazioneTesiPage implements OnInit {
   private vecchiCorrelatori: string[] = [];
   correlatori: string = "";
 
-  constructor(private alertController: AlertController) { 
+  constructor(private alertController: AlertController, private navCtrl: NavController) { 
     this.correlatoriSelezionati = ['Giulio Garbi']
     this.correlatori = this.boxCorrelatori()
     this.titolo = "F1"
@@ -171,6 +172,10 @@ export class VisualizzazioneTesiPage implements OnInit {
 
   eliminaTesi() {
 
+  }
+
+  visualizzaAllegati() {
+    this.navCtrl.navigateForward(['/allegati-tesi-tirocini'], { state: {"tesi": 1} });
   }
 
 

@@ -1,0 +1,45 @@
+ion-toolbar {
+    --background: #012D5E
+}
+
+.allegatiTitle {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: xx-large;
+    color: white;
+}
+
+.back {
+    --background: #012D5E;
+    color: #ffffff;
+}
+
+.nuovoTButton {
+    margin-top:20%;
+    --background: #012D5E;
+    color: #ffffff;
+    width: 2.5em;
+    height: 2.5em;
+}
+
+.allegatoUpperIcons {
+    color: #ffffff;
+    width: 2.5em;
+    height: 2.5em;
+}
+
+.allegatiContent {
+    --ion-background-color: #012D5E
+}
+
+  
+ion-label strong {
+    display: block;
+    max-width: calc(100% - 60px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+ion-label ion-note {
+    font-size: 0.9rem;
+}

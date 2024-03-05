@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons class="backButtons" slot="start">
+      <ion-back-button class="back" defaultHref=""></ion-back-button>
+    </ion-buttons>
+    <ion-buttons class="eliminaAButtons" slot="end">
+      <ion-button class="eliminaAButton" (click)="eliminaAllegato()"><ion-icon class='homeStudenteUpperIcons' name="trash"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <h1 class="allegatiTitle"><b>{{nomeAllegato}}</b></h1>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="allegatiContent" fullscreen="true">
+  <div class="mainDiv">
+    <div class="userInput">
+      <h3 class="titolo"><b>Nome</b> <ion-icon id="present-titolo-alert" name="pencil-outline"></ion-icon></h3>
+      <ion-item (click)="presentTitoloAlert()">
+        <ion-input color="light" [clearInput]="true" placeholder="Nessun titolo" [value]="nomeAllegatoTemp" [readonly]="true"></ion-input>
+      </ion-item>
+
+      <h3 class="titolo"><b>TIPOLOGIA</b></h3>
+      <ion-item [button]="true" id="selezioneInsegnamento">
+        <ion-input color="light" [clearInput]="true" placeholder="Tipologia" [readonly]="true"></ion-input>
+      </ion-item>
+
+      <h3 class="titolo"><b>Nota</b> <ion-icon id="present-titolo-alert" name="pencil-outline"></ion-icon></h3>
+      <ion-item>
+        <ion-textarea [autoGrow]="true"  color="light"  placeholder="Inserisci nota" [value]="notaTemp" [(ngModel)]="notaTemp"></ion-textarea>
+      </ion-item>
+
+      <h3 class="titolo"><b>SOSTITUISCI FILE > </b></h3>
+    </div>
+  </div>
+
+  <div id="buttons">
+    <div class="buttonDiv">
+      <ion-button class="creaButton" (click)="confermaModifiche()"><b>CONFERMA</b></ion-button>
+    </div>
+  </div>
+</ion-content>

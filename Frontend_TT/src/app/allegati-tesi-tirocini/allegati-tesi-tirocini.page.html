@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="back" defaultHref=""></ion-back-button>
+    </ion-buttons>
+    <ion-buttons class="nuovoTButtons" slot="end">
+      <ion-button class="nuovoTButton" (click)="aggiungiAllegato()"><ion-icon class="allegatoUpperIcons" name="add-circle-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <h1 class="allegatiTitle"><b>ALLEGATI</b></h1>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="allegatiContent" fullscreen="true">
+    <ion-list [inset]="true">
+      <ion-item *ngFor="let allegato of allegati" [button]="true" (click)="apriAllegato(allegato.id)">
+        <ion-label>{{allegato.nome}}</ion-label> 
+        <ion-note slot="end"></ion-note>
+      </ion-item>
+    </ion-list>
+</ion-content>
