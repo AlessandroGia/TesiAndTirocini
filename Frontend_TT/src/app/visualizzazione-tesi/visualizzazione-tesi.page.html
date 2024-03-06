@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -6,7 +5,7 @@
     </ion-buttons>
   </ion-toolbar>
   <ion-toolbar>
-    <h1 class="visualizzazioneTesiTitle"><b>VISUALIZZAZIONE TESI</b></h1>
+    <h1 class="visualizzazioneTesiTitle"><b>TESI</b></h1>
   </ion-toolbar>
 </ion-header>
 
@@ -14,7 +13,7 @@
   <div class="mainDiv">
     <div class="userInput">
 
-      <h3 class="titolo"><b>TITOLO</b> <ion-icon id="present-titolo-alert" name="pencil-outline"></ion-icon></h3>
+      <h3 class="titolo"><b>TITOLO</b> <ion-icon class="present-alert" name="pencil-outline"></ion-icon></h3>
       <ion-item (click)="presentTitoloAlert()">
         <ion-input  color="light" [clearInput]="true" placeholder="Nessun titolo" [value]="titolo" [readonly]="true"></ion-input>
       </ion-item>
@@ -34,7 +33,7 @@
         <ion-input color="light" [clearInput]="true" [value]="relatore" [readonly]="true"></ion-input>
       </ion-item>
 
-      <h3 class="titolo"><b>CORRELATORI</b><ion-icon id="present-titolo-alert" name="pencil-outline"></ion-icon></h3>
+      <h3 class="titolo"><b>CORRELATORI</b><ion-icon class="present-alert" name="pencil-outline"></ion-icon></h3>
       <ion-item [button]="true" id="selezioneCorrelatori">
         <ion-input color="light" [clearInput]="true" placeholder="0 correlatori selezionati" [value]="correlatori" [readonly]="true"></ion-input>
       </ion-item>
@@ -58,7 +57,7 @@
             </ion-toolbar>
           </ion-header>
           
-          <ion-content class="nuovaTesiContent">
+          <ion-content class="visualizzazioneTesiContent">
             <ion-list id="modal-list" [inset]="true">
               <ion-item class="item" *ngFor="let interno of ricercaInterni">
                 <ion-checkbox [value]="interno.nome" (ionChange)="gestisciCheckbox($event, interno.nome)" [checked]="correlatoriSelezionati.includes(interno.nome)">{{ interno.nome }}</ion-checkbox>
@@ -69,8 +68,23 @@
       </ion-modal>
 
       <h3 class="titolo"><b>DATA DISCUSSIONE</b></h3>
-      <ion-item id="dataDiscussione">
-        {{this.dataDiscussione}}
+      <ion-item [button]="true" (click)="openCalendar()" id="dataDiscussione">
+        <ion-input color="light" [clearInput]="true" placeholder="Nessuna data selezionata" [value]="dataFormattata" [readonly]="true"></ion-input>
+
+        <ion-datetime-button datetime="datetime" id="fake-click"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true" [isOpen]="showCalendar" (didDismiss)="cancelCalendar()">
+          <ng-template>
+            <ion-datetime
+              id="datetime"
+              presentation="date"
+              [showDefaultButtons]="true"
+              doneText="CONFERMA"
+              cancelText="ANNULLA"
+              [(ngModel)]="dataDiscussione"
+              (ionChange)="aggiornaData()"
+            ></ion-datetime>
+          </ng-template>
+        </ion-modal>
       </ion-item>
 
       <h3 class="titolo" (click)="visualizzaAllegati()"><b>ALLEGATI > </b></h3>

@@ -25,4 +25,8 @@ export class HomeStudenteTesiPage implements OnInit {
     this.navCtrl.navigateForward(['/nuova-tesi']);
   }
 
+  public visualizzaTesi() {
+    this.navCtrl.navigateForward(['/visualizzazione-tesi']);
+  }
+
 }

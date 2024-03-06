@@ -1,4 +1,3 @@
-import { state } from '@angular/animations';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { IonModal, NavController } from '@ionic/angular';
@@ -16,7 +15,9 @@ export class VisualizzazioneTesiPage implements OnInit {
   corsoDiStudi: string;
   relatore: string;
   //correlatori: Array<string>;
-  dataDiscussione: string
+  dataDiscussione: string;
+  dataFormattata: string;
+  showCalendar: boolean;
 
   interni: any[] = [
     { id: 1, nome: 'Michele Guerra' },
@@ -34,13 +35,15 @@ export class VisualizzazioneTesiPage implements OnInit {
   correlatori: string = "";
 
   constructor(private alertController: AlertController, private navCtrl: NavController) { 
-    this.correlatoriSelezionati = ['Giulio Garbi']
-    this.correlatori = this.boxCorrelatori()
-    this.titolo = "F1"
-    this.insegnamento = "Fluido Dinamica";
-    this.corsoDiStudi = "Ingegneria Meccanica"
-    this.relatore = "Fabio Fante"
-    this.dataDiscussione = "01/01/2022"
+    this.correlatoriSelezionati = ['Giulio Garbi'];
+    this.correlatori = this.boxCorrelatori();
+    this.titolo = "CBMC Model Checking";
+    this.insegnamento = "Algoritmi e Strutture Dati";
+    this.corsoDiStudi = "Informatica";
+    this.relatore = "Gennaro Parlato";
+    this.dataDiscussione = new Date().toISOString();
+    this.dataFormattata = "";
+    this.showCalendar = false;
   }
 
   ngOnInit() {
@@ -70,8 +73,6 @@ export class VisualizzazioneTesiPage implements OnInit {
     this.modalCorrelatori.dismiss(null, 'confirm');
   }
 
-  
-
   handleInputC(event: any) {
     const query = event.target.value.toLowerCase();
     this.ricercaInterni = this.interni.filter((d) => d.nome.toLowerCase().indexOf(query) > -1);
@@ -94,14 +95,14 @@ export class VisualizzazioneTesiPage implements OnInit {
 
   async presentTitoloAlert() {
     const alert = await this.alertController.create({
-      header: 'Cambia titolo',
+      header: 'Modifica Titolo',
       buttons: [
         {
-          text: 'Cancel',
+          text: 'ANNULLA',
           role: 'cancel',
         },
         {
-          text: 'OK',
+          text: 'CONFERMA',
           role: 'confirm',
           handler: (data: any) => {
             this.cambiaTitolo(data.titolo)
@@ -110,7 +111,7 @@ export class VisualizzazioneTesiPage implements OnInit {
       ],
       inputs: [
         {
-          placeholder: 'Titolo',
+          placeholder: 'Nuovo Titolo',
           name: 'titolo'
         }
       ],
@@ -124,9 +125,10 @@ export class VisualizzazioneTesiPage implements OnInit {
       this.titolo = nuovoTitolo
     }
   }
+
   async presentConcludiTesi() {
     const alert = await this.alertController.create({
-      header: 'Confermi di aver discusso la tesi in data ' + this.dataDiscussione + '?',
+      header: 'Confermi di aver discusso la tesi in data ' + this.dataFormattata + '?',
       buttons: [
         {
           text: 'Cancel',
@@ -178,6 +180,22 @@ export class VisualizzazioneTesiPage implements OnInit {
     this.navCtrl.navigateForward(['/allegati-tesi-tirocini'], { state: {"tesi": 1} });
   }
 
+  openCalendar() {
+    this.showCalendar = true;
+  }
 
+  cancelCalendar() {
+    this.showCalendar = false;
+  }
+
+  public aggiornaData() {
+    const date = new Date(this.dataDiscussione);
+
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+
+    this.dataFormattata = `${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year}`;
+  }
 
 }
