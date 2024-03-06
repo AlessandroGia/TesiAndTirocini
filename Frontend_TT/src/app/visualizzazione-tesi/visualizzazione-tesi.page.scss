@@ -21,6 +21,23 @@ ion-checkbox {
     --checkmark-width: 5%;
 }
 
+ion-datetime {
+    --background: #CAEF23;
+    --title-color: #012D5E;
+}
+
+ion-datetime::part(calendar-day) {
+    color: #012D5E;
+}
+
+ion-datetime::part(calendar-day):active:focus {
+    background-color: #ffffff;
+}
+
+ion-datetime::part(calendar-day):focus {
+    background-color: #ffffff;
+}
+
 .modalUpperButtons {
     --color: #ffffff;
 }
@@ -47,8 +64,6 @@ ion-checkbox {
     color: white;
 }
 
-
-
 .visualizzazioneTesiContent {
     --ion-background-color: #012D5E
 }
@@ -70,7 +85,6 @@ ion-checkbox {
 ion-toolbar {
     --background: #012D5E
 }
-
 
 .item {
     --color: #ffffff;

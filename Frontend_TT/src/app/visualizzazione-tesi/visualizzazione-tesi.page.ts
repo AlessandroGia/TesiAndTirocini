@@ -98,11 +98,11 @@ export class VisualizzazioneTesiPage implements OnInit {
       header: 'Modifica Titolo',
       buttons: [
         {
-          text: 'ANNULLA',
+          text: 'Annulla',
           role: 'cancel',
         },
         {
-          text: 'CONFERMA',
+          text: 'OK',
           role: 'confirm',
           handler: (data: any) => {
             this.cambiaTitolo(data.titolo)
@@ -111,7 +111,7 @@ export class VisualizzazioneTesiPage implements OnInit {
       ],
       inputs: [
         {
-          placeholder: 'Nuovo Titolo',
+          placeholder: 'Nuovo titolo',
           name: 'titolo'
         }
       ],
@@ -131,7 +131,7 @@ export class VisualizzazioneTesiPage implements OnInit {
       header: 'Confermi di aver discusso la tesi in data ' + this.dataFormattata + '?',
       buttons: [
         {
-          text: 'Cancel',
+          text: 'Annulla',
           role: 'cancel',
         },
         {
@@ -152,7 +152,7 @@ export class VisualizzazioneTesiPage implements OnInit {
       header: 'Confermi di voler eliminare la tesi?',
       buttons: [
         {
-          text: 'Cancel',
+          text: 'Annulla',
           role: 'cancel',
         },
         {

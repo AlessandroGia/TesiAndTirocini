@@ -67,7 +67,7 @@
         </ng-template>
       </ion-modal>
 
-      <h3 class="titolo"><b>DATA DISCUSSIONE</b></h3>
+      <h3 class="titolo"><b>DATA DISCUSSIONE</b><ion-icon class="present-alert" name="pencil-outline"></ion-icon></h3>
       <ion-item [button]="true" (click)="openCalendar()" id="dataDiscussione">
         <ion-input color="light" [clearInput]="true" placeholder="Nessuna data selezionata" [value]="dataFormattata" [readonly]="true"></ion-input>
 
@@ -87,7 +87,7 @@
         </ion-modal>
       </ion-item>
 
-      <h3 class="titolo" (click)="visualizzaAllegati()"><b>ALLEGATI > </b></h3>
+      <h3 class="titolo" (click)="visualizzaAllegati()"><b>ALLEGATI ></b></h3>
 
       <ion-modal trigger="visualizzaAllegati" #modalCorrelatori>
         <ng-template>
