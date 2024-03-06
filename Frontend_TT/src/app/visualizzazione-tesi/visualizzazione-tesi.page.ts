@@ -19,6 +19,8 @@ export class VisualizzazioneTesiPage implements OnInit {
   dataFormattata: string;
   showCalendar: boolean;
 
+  alertFlag: boolean = false;
+
   interni: any[] = [
     { id: 1, nome: 'Michele Guerra' },
     { id: 2, nome: 'Giulio Garbi' },
@@ -94,30 +96,36 @@ export class VisualizzazioneTesiPage implements OnInit {
   }
 
   async presentTitoloAlert() {
-    const alert = await this.alertController.create({
-      header: 'Modifica Titolo',
-      buttons: [
-        {
-          text: 'Annulla',
-          role: 'cancel',
-        },
-        {
-          text: 'OK',
-          role: 'confirm',
-          handler: (data: any) => {
-            this.cambiaTitolo(data.titolo)
-          },
-        },
-      ],
-      inputs: [
-        {
-          placeholder: 'Nuovo titolo',
-          name: 'titolo'
-        }
-      ],
-    });
+    if (!this.alertFlag) {
+      this.alertFlag = true;
 
-    await alert.present();
+      const alert = await this.alertController.create({
+        header: 'Modifica Titolo',
+        buttons: [
+          {
+            text: 'Annulla',
+            role: 'cancel',
+          },
+          {
+            text: 'OK',
+            role: 'confirm',
+            handler: (data: any) => {
+              this.cambiaTitolo(data.nome)
+            },
+          },
+        ],
+        inputs: [
+          {
+            placeholder: "Nuovo titolo",
+            name: 'nome'
+          }
+        ],
+      });
+
+      await alert.present();
+
+      this.alertFlag = false;
+    }
   }
 
   cambiaTitolo(nuovoTitolo: string) {

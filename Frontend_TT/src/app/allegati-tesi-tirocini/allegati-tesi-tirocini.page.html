@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons class="backButtons" slot="start">
       <ion-back-button class="back" defaultHref=""></ion-back-button>
     </ion-buttons>
     <ion-buttons class="nuovoTButtons" slot="end">
@@ -14,9 +14,8 @@
 
 <ion-content class="allegatiContent" fullscreen="true">
     <ion-list [inset]="true">
-      <ion-item *ngFor="let allegato of allegati" [button]="true" (click)="apriAllegato(allegato.id)">
-        <ion-label>{{allegato.nome}}</ion-label> 
-        <ion-note slot="end"></ion-note>
+      <ion-item class="itemAllegati" *ngFor="let allegato of allegati" [button]="true" (click)="apriAllegato(allegato.id)">
+        <ion-input color="light" [clearInput]="true" [value]="allegato.nome" [readonly]="true"></ion-input>
       </ion-item>
     </ion-list>
 </ion-content>

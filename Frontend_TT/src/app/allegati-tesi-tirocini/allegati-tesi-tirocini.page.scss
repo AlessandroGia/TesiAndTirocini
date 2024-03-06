@@ -1,5 +1,14 @@
 ion-toolbar {
-    --background: #012D5E
+    --background: #012D5E;
+}
+
+ion-input {
+    --color: #CAEF23;
+}
+
+.itemAllegati {
+    color: #ffffff;
+    padding-bottom: 4%;
 }
 
 .allegatiTitle {
@@ -14,12 +23,21 @@ ion-toolbar {
     color: #ffffff;
 }
 
+.backButtons {
+    top: 5%;
+    position: absolute;
+}
+
 .nuovoTButton {
     margin-top:20%;
     --background: #012D5E;
     color: #ffffff;
     width: 2.5em;
     height: 2.5em;
+}
+
+.nuovoTButtons {
+    margin-right: 3%;
 }
 
 .allegatoUpperIcons {
@@ -32,7 +50,6 @@ ion-toolbar {
     --ion-background-color: #012D5E
 }
 
-  
 ion-label strong {
     display: block;
     max-width: calc(100% - 60px);

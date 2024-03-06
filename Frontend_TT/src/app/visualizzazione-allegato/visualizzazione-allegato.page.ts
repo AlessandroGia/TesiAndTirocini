@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-import { timeInterval } from 'rxjs';
 
 @Component({
   selector: 'app-visualizzazione-allegato',
@@ -11,11 +10,15 @@ export class VisualizzazioneAllegatoPage implements OnInit {
 
   constructor(private alertController: AlertController) { }
 
-  nomeAllegato = 'Pres. tesi'
-  nomeAllegatoTemp = this.nomeAllegato
+  alertFlag: boolean = false;
 
-  nota = 'Es. nota'
+  nomeAllegato: string = '[Nome Allegato]';
+  nomeAllegatoTemp: string = this.nomeAllegato;
+
+  nota = "";
   notaTemp = this.nota
+
+  tipologia: string = "Abstract";
 
   ngOnInit() {
     let id = 0
@@ -27,30 +30,36 @@ export class VisualizzazioneAllegatoPage implements OnInit {
   }
 
   async presentTitoloAlert() {
-    const alert = await this.alertController.create({
-      header: 'Cambia titolo',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-        },
-        {
-          text: 'OK',
-          role: 'confirm',
-          handler: (data: any) => {
-            this.cambiaNomeAllegato(data.nome)
-          },
-        },
-      ],
-      inputs: [
-        {
-          placeholder: this.nomeAllegatoTemp,
-          name: 'nome'
-        }
-      ],
-    });
+    if (!this.alertFlag) {
+      this.alertFlag = true;
 
-    await alert.present();
+      const alert = await this.alertController.create({
+        header: 'Modifica Nome',
+        buttons: [
+          {
+            text: 'Annulla',
+            role: 'cancel',
+          },
+          {
+            text: 'OK',
+            role: 'confirm',
+            handler: (data: any) => {
+              this.cambiaNomeAllegato(data.nome)
+            },
+          },
+        ],
+        inputs: [
+          {
+            placeholder: "Nuovo nome",
+            name: 'nome'
+          }
+        ],
+      });
+
+      await alert.present();
+
+      this.alertFlag = false;
+    }
   }
 
   cambiaNomeAllegato(nuovoNome: string) {
@@ -59,8 +68,22 @@ export class VisualizzazioneAllegatoPage implements OnInit {
     }
   }
 
-  eliminaAllegato() {
-    // query per cancellare l'allegato
+  async eliminaAllegato() {
+    const alert = await this.alertController.create({
+      header: "Confermi di voler eliminare l'allegato?",
+      buttons: [
+        {
+          text: 'Annulla',
+          role: 'cancel',
+        },
+        {
+          text: 'OK',
+          role: 'confirm',
+        },
+      ],
+    });
+
+    await alert.present();
   }
 
   confermaModifiche() {

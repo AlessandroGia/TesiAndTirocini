@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreazioneAllegatoPage implements OnInit {
 
-  nota: string = ''
-  nomeAllegato: string = ''
+  notaTemp: string = "";
+  tipologia: string = "";
 
   constructor() { 
 

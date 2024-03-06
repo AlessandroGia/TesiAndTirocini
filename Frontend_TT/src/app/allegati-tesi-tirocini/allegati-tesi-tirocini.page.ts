@@ -9,12 +9,14 @@ import { RouterModule } from '@angular/router';
 })
 export class AllegatiTesiTirociniPage implements OnInit {
 
-  allegati: Array<any> = [{nome: 'Del PIEROOOO', id: 10}]
+  allegati: Array<any> = [];
 
   constructor(public router: RouterModule, private navCtr: NavController) {
     this.allegati = [
-      {nome: 'Pres. tesi', id: 10}
-    ]
+      {nome: 'Abstract', id: 10},
+      {nome: 'Presentazione', id: 10},
+      {nome: 'Richiesta Tesi', id: 10},
+      {nome: 'Tesi', id: 10}]
   }
 
   ngOnInit() {

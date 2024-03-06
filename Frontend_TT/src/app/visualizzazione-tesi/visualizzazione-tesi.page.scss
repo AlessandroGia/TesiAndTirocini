@@ -1,5 +1,5 @@
 ion-toolbar {
-    --background: #012D5E
+    --background: #012D5E;
 }
 
 ion-searchbar {
@@ -82,14 +82,9 @@ ion-datetime::part(calendar-day):focus {
     text-align: left;
 }
 
-ion-toolbar {
-    --background: #012D5E
-}
-
 .item {
     --color: #ffffff;
 }
-
 
 .userInput {
     padding-left: 12%;
@@ -144,7 +139,6 @@ ion-toolbar {
     position: right;
     float: right;
 }
-
 
 .present-alert {
     margin-left: 3%;
