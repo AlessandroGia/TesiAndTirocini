@@ -19,16 +19,47 @@
       </ion-item>
 
       <h3 class="titolo"><b>TIPOLOGIA</b></h3>
-      <ion-item [button]="true">
-        <ion-input color="light" [clearInput]="true" [readonly]="true" placeholder="Inserire tipologia" [value]="tipologia"></ion-input>
+      <ion-item [button]="true" id="selezioneTipologia">
+        <ion-input color="light" [clearInput]="true" [readonly]="true" placeholder="Inserire tipologia" [value]="tipologiaSelezionata"></ion-input>
       </ion-item>
+
+      <ion-modal trigger="selezioneTipologia" #modalTipologia>
+        <ng-template>
+          <ion-header>
+            <ion-toolbar>
+              <ion-buttons slot="start">
+                <ion-button class="modalUpperButtons" (click)="cancelTipologia()">Annulla</ion-button>
+              </ion-buttons>
+              <ion-buttons slot="end">
+                <ion-button class="modalUpperButtons" (click)="confirmTipologia()">Fatto</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+            <ion-toolbar>
+              <h3 class="modalTitle"><b>SELEZIONA TIPOLOGIA</b></h3>
+            </ion-toolbar>
+            <ion-toolbar>
+              <ion-searchbar [debounce]="500" (ionInput)="handleInputT($event)" animated="true" placeholder="Cerca..."></ion-searchbar>
+            </ion-toolbar>
+          </ion-header>
+          
+          <ion-content class="allegatiContent">
+            <ion-list id="modal-list" [inset]="true">
+              <ion-radio-group [(ngModel)]="tipologiaSelezionata">
+                <ion-item class="item" *ngFor="let tipologia of ricercaTipologie">
+                  <ion-radio class="radio" [value]="tipologia.nome">{{ tipologia.nome }}</ion-radio>
+                </ion-item>
+            </ion-radio-group>
+            </ion-list>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
 
       <h3 class="titolo"><b>NOTA</b></h3>
       <ion-item>
         <ion-textarea [autoGrow]="true" color="light" placeholder="Inserire nota" [(ngModel)]="notaTemp"></ion-textarea>
       </ion-item>
 
-      <h3 class="titolo"><b>APRI FILE ></b></h3>
+      <h3 class="titolo"><b>ALLEGA FILE ></b></h3>
     </div>
   </div>
 

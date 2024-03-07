@@ -85,15 +85,4 @@ export class VisualizzazioneAllegatoPage implements OnInit {
 
     await alert.present();
   }
-
-  confermaModifiche() {
-    this.nomeAllegato = this.nomeAllegatoTemp
-    this.nota = this.notaTemp
-    // query per l'update
-
-    
-  }
-
-
-
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonModal, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-creazione-allegato',
@@ -6,15 +7,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./creazione-allegato.page.scss'],
 })
 export class CreazioneAllegatoPage implements OnInit {
+  @ViewChild('modalTipologia', { static: true }) modalTipologia!: IonModal;
 
-  notaTemp: string = "";
-  tipologia: string = "";
+  notaTemp: string;
+
+  tipologiaSelezionata: string;
+  private vecchiaITipologia: string;
+
+  tipologie: any[] = [
+    { id: 1, nome: 'Abstract' },
+    { id: 2, nome: 'Presentazione' },
+    { id: 3, nome: 'Richiesta Tesi' },
+    { id: 4, nome: 'Tesi' },
+  ];
+
+  ricercaTipologie: any[];
 
   constructor() { 
+    this.notaTemp = "";
+    this.tipologiaSelezionata = "";
+    this.vecchiaITipologia = "";
 
+    this.ricercaTipologie = [...this.tipologie];
   }
   
-
   ngOnInit() {
     if (history.state.tesi == 1) {
       // fare la query di aggiunta allegato su tesi
@@ -27,6 +43,20 @@ export class CreazioneAllegatoPage implements OnInit {
     // query per la creazione dell'allegato
   }
 
+  cancelTipologia() {
+    this.tipologiaSelezionata = this.vecchiaITipologia;
+    this.ricercaTipologie = [...this.tipologie];
+    this.modalTipologia.dismiss(null, 'cancel');
+  }
 
+  confirmTipologia() {
+    this.vecchiaITipologia = this.tipologiaSelezionata;
+    this.ricercaTipologie = [...this.tipologie];
+    this.modalTipologia.dismiss(null, 'confirm');
+  }
 
+  handleInputT(event: any) {
+    const query = event.target.value.toLowerCase();
+    this.ricercaTipologie = this.tipologie.filter((d) => d.nome.toLowerCase().indexOf(query) > -1);
+  }
 }

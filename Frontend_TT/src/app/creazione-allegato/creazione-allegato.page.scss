@@ -38,7 +38,7 @@ ion-checkbox {
 }
 
 .allegatiContent {
-    --ion-background-color: #012D5E
+    --ion-background-color: #012D5E;
 }
 
 .mainDiv {
@@ -81,4 +81,18 @@ ion-checkbox {
     --color: #012D5E;
     --background: #CAEF23;
     --background-activated: #ffffff;
+}
+
+.modalUpperButtons {
+    --color: #ffffff;
+}
+
+.modalTitle {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: #CAEF23;
+}
+
+.radio {
+    --color-checked: #CAEF23;
 }
