@@ -21,4 +21,8 @@ export class HomeStudenteTirocinioPage implements OnInit {
     this.navCtrl.navigateBack(['/home-studente-tesi']);
   }
 
+  public nuovoTirocinio() {
+    this.navCtrl.navigateForward(['/nuovo-tirocinio']);
+  }
+
 }

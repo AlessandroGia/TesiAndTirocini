@@ -42,6 +42,10 @@ const routes: Routes = [
     path: 'creazione-allegato',
     loadChildren: () => import('./creazione-allegato/creazione-allegato.module').then( m => m.CreazioneAllegatoPageModule)
   },
+  {
+    path: 'nuovo-tirocinio',
+    loadChildren: () => import('./nuovo-tirocinio/nuovo-tirocinio.module').then( m => m.NuovoTirocinioPageModule)
+  },
 
 
 ];

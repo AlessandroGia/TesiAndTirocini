@@ -23,7 +23,7 @@ export class CreazioneAllegatoPage implements OnInit {
 
   ricercaTipologie: any[];
 
-  constructor() { 
+  constructor(private navCtrl: NavController) { 
     this.notaTemp = "";
     this.tipologiaSelezionata = "";
     this.vecchiaITipologia = "";
@@ -39,8 +39,10 @@ export class CreazioneAllegatoPage implements OnInit {
     }
   }
 
-  confermaModifiche() {
+  conferma() {
     // query per la creazione dell'allegato
+
+    this.navCtrl.navigateForward(['/allegati-tesi-tirocini']);
   }
 
   cancelTipologia() {
