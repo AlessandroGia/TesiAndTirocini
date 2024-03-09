@@ -16,6 +16,8 @@ export class NuovoTirocinioPage implements OnInit {
   tutorSelezionato: string;
   private vecchioTutor: string;
 
+  durataTirocinio: string;
+
   laboratori: any[] = [
     { id: 1, nome: 'Spike Lab' },
     { id: 2, nome: 'Pac Lab' },
@@ -39,6 +41,8 @@ export class NuovoTirocinioPage implements OnInit {
     this.vecchioLaboratorio = "";
     this.tutorSelezionato = "";
     this.vecchioTutor = "";
+
+    this.durataTirocinio = "";
 
     this.ricercaLaboratori = [...this.laboratori];
     this.ricercaDocenti = [...this.docenti];
