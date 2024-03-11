@@ -46,6 +46,10 @@ const routes: Routes = [
     path: 'nuovo-tirocinio',
     loadChildren: () => import('./nuovo-tirocinio/nuovo-tirocinio.module').then( m => m.NuovoTirocinioPageModule)
   },
+  {
+    path: 'visualizzazione-tirocinio',
+    loadChildren: () => import('./visualizzazione-tirocinio/visualizzazione-tirocinio.module').then( m => m.VisualizzazioneTirocinioPageModule)
+  },
 
 
 ];

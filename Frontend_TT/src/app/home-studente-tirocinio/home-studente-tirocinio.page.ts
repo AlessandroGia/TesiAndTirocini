@@ -25,4 +25,8 @@ export class HomeStudenteTirocinioPage implements OnInit {
     this.navCtrl.navigateForward(['/nuovo-tirocinio']);
   }
 
+  public visualizzaTirocinio() {
+    this.navCtrl.navigateForward(['/visualizzazione-tirocinio']);
+  }
+
 }
