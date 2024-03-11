@@ -16,7 +16,7 @@ export class VisualizzazioneAllegatoPage implements OnInit {
   nomeAllegatoTemp: string = this.nomeAllegato;
 
   nota = "";
-  notaTemp = this.nota
+  notaTemp = this.nota;
 
   tipologia: string = "Abstract";
 

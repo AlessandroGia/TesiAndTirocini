@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons class="backButtons" slot="start">
+      <ion-back-button class="back" defaultHref="visualizzazione-tirocinio"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons class="nuovaAButtons" slot="end">
+      <ion-button class="nuovaAButton" (click)="aggiungiAttivita()"><ion-icon class="attivitaUpperIcons" name="add-circle-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <h1 class="attivitaTitle"><b>ATTIVITÀ TIROCINIO</b></h1>
+    <h3 class="attivitaCompletamento">Completamento: 36 / 160 ore</h3>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="attivitaContent" fullscreen="true">
+    <ion-list [inset]="true">
+      <ion-item class="itemAttivita" *ngFor="let attivita of elencoAttivita" [button]="true" (click)="apriAttivita(attivita.id)">
+        <ion-input color="light" [clearInput]="true" [value]="attivita.data + ' | ' + attivita.durata + ' | ' + attivita.entrataUscita" [readonly]="true"></ion-input>
+      </ion-item>
+    </ion-list>
+</ion-content>

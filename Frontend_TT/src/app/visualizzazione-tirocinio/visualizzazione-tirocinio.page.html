@@ -24,7 +24,7 @@
       </ion-item>
 
       <h3 class="titolo"><b>COMPLETAMENTO</b><ion-icon class="present-alert" name="pencil-outline"></ion-icon></h3>
-      <ion-item [button]="true">
+      <ion-item [button]="true" (click)="elencoAttivita()">
         <ion-input color="light" [clearInput]="true" [value]="completamento" [readonly]="true"></ion-input>
       </ion-item>
 
@@ -67,7 +67,7 @@
         </ng-template>
       </ion-modal>
 
-      <h3 class="titolo"><b>DATA APPROVAZIONE PROGETTO FORMATIVO</b><ion-icon class="present-alert" name="pencil-outline"></ion-icon></h3>
+      <h3 class="titolo"><b>DATA APPROVAZIONE<br>PROG. FORMATIVO</b><ion-icon class="present-alert" name="pencil-outline"></ion-icon></h3>
       <ion-item [button]="true" (click)="openCalendar()" id="dataDiscussione">
         <ion-input color="light" [clearInput]="true" placeholder="Nessuna data selezionata" [value]="dataPFFormattata" [readonly]="true"></ion-input>
 
@@ -87,7 +87,7 @@
         </ion-modal>
       </ion-item>
 
-      <h3 class="titolo"><b>TUTOR UNIVERSITARIO</b></h3>
+      <h3 class="titolo"><b>TUTOR<br>UNIVERSITARIO</b><ion-icon class="present-alert" name="pencil-outline"></ion-icon></h3>
       <ion-item [button]="true" id="selezioneTutorU">
         <ion-input color="light" [clearInput]="true" placeholder="Inserire tutor universitario" [value]="tutorUniversitario" [readonly]="true"></ion-input>
       </ion-item>
@@ -128,7 +128,7 @@
 
     <div id="buttons">
       <div class="buttonDiv">
-        <ion-button class="creaButton" (click)="presentConcludiTirocinio()"><b>GENERA LIBRETTO DIARIO</b></ion-button>
+        <ion-button class="creaButton" (click)="navigaLibrettoDiario()"><b>GENERA LIBRETTO DIARIO</b></ion-button>
       </div>
       <div class="buttonDiv">
         <ion-button class="creaButton" (click)="presentEliminaTirocinio()"><b>ELIMINA TIROCINIO</b></ion-button>

@@ -50,6 +50,22 @@ const routes: Routes = [
     path: 'visualizzazione-tirocinio',
     loadChildren: () => import('./visualizzazione-tirocinio/visualizzazione-tirocinio.module').then( m => m.VisualizzazioneTirocinioPageModule)
   },
+  {
+    path: 'libretto-diario',
+    loadChildren: () => import('./libretto-diario/libretto-diario.module').then( m => m.LibrettoDiarioPageModule)
+  },
+  {
+    path: 'elenco-attivita-tirocinio',
+    loadChildren: () => import('./elenco-attivita-tirocinio/elenco-attivita-tirocinio.module').then( m => m.ElencoAttivitaTirocinioPageModule)
+  },
+  {
+    path: 'creazione-attivita',
+    loadChildren: () => import('./creazione-attivita/creazione-attivita.module').then( m => m.CreazioneAttivitaPageModule)
+  },
+  {
+    path: 'visualizzazione-attivita',
+    loadChildren: () => import('./visualizzazione-attivita/visualizzazione-attivita.module').then( m => m.VisualizzazioneAttivitaPageModule)
+  },
 
 
 ];

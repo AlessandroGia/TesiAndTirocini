@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonModal, NavController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 @Component({

@@ -58,7 +58,7 @@ export class VisualizzazioneTirocinioPage implements OnInit {
     this.completamento = "36 / 160 ore";
     this.dataPF = new Date().toISOString();
     this.tutorUniversitario = "Giovanni Capobianco";
-    this.vecchioTutorU = "";
+    this.vecchioTutorU = "Giovanni Capobianco";
     this.ricercaDocenti = [...this.docenti];
     this.dataPFFormattata = "";
     this.showCalendar = false;
@@ -128,25 +128,8 @@ export class VisualizzazioneTirocinioPage implements OnInit {
     }
   }
 
-  async presentConcludiTirocinio() {
-    const alert = await this.alertController.create({
-      header: 'Confermi di aver discusso la tesi in data ' + this.dataPFFormattata + '?',
-      buttons: [
-        {
-          text: 'Annulla',
-          role: 'cancel',
-        },
-        {
-          text: 'OK',
-          role: 'confirm',
-          handler: () => {
-            this.concludiTirocinio();
-          },
-        },
-      ],
-    });
-
-    await alert.present();
+  public navigaLibrettoDiario() {
+    this.navCtrl.navigateForward(['/libretto-diario']);
   }
 
   async presentEliminaTirocinio() {
@@ -198,6 +181,10 @@ export class VisualizzazioneTirocinioPage implements OnInit {
     const year = date.getFullYear();
 
     this.dataPFFormattata = `${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year}`;
+  }
+
+  public elencoAttivita() {
+    this.navCtrl.navigateForward(['/elenco-attivita-tirocinio']);
   }
 
 }

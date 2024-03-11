@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="back" defaultHref="visualizzazione-tirocinio"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <h1 class="librettoDiarioTitle"><b>LIBRETTO DIARIO</b></h1>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="librettoDiarioContent" fullscreen="true">
+  <div class="mainDiv">
+    <div class="userInput">
+
+      <h3 class="titolo"><b>DATA INIZIO ATTIVITÀ</b><ion-icon class="present-alert" name="pencil-outline"></ion-icon></h3>
+      <ion-item [button]="true" (click)="openCalendarI()">
+        <ion-input color="light" [clearInput]="true" placeholder="Nessuna data selezionata" [value]="dataIFormattata" [readonly]="true"></ion-input>
+
+        <ion-datetime-button datetime="datetimeI" id="fake-click"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true" [isOpen]="showCalendarI" (didDismiss)="cancelCalendarI()">
+          <ng-template>
+            <ion-datetime
+              id="datetimeI"
+              presentation="date"
+              [showDefaultButtons]="true"
+              doneText="CONFERMA"
+              cancelText="ANNULLA"
+              [(ngModel)]="dataInizio"
+              (ionChange)="aggiornaDataI()"
+            ></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+
+      <h3 class="titolo"><b>DATA FINE ATTIVITÀ</b><ion-icon class="present-alert" name="pencil-outline"></ion-icon></h3>
+      <ion-item [button]="true" (click)="openCalendarF()">
+        <ion-input color="light" [clearInput]="true" placeholder="Nessuna data selezionata" [value]="dataFFormattata" [readonly]="true"></ion-input>
+
+        <ion-datetime-button datetime="datetimeF" id="fake-click"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true" [isOpen]="showCalendarF" (didDismiss)="cancelCalendarF()">
+          <ng-template>
+            <ion-datetime
+              id="datetimeF"
+              presentation="date"
+              [showDefaultButtons]="true"
+              doneText="CONFERMA"
+              cancelText="ANNULLA"
+              [(ngModel)]="dataFine"
+              (ionChange)="aggiornaDataF()"
+            ></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+
+      <h3 class="titolo"><b>EVENTUALI ANNOTAZIONI</b> <ion-icon class="present-alert" name="pencil-outline"></ion-icon></h3>
+      <ion-item>
+        <ion-textarea [autoGrow]="true" color="light" placeholder="Inserire nota" [(ngModel)]="nota"></ion-textarea>
+      </ion-item>
+
+    </div>
+
+    <div id="buttons">
+      <div class="buttonDiv">
+        <ion-button class="creaButton" (click)="genera()"><b>GENERA</b></ion-button>
+      </div>
+    </div>
+
+  </div>
+</ion-content>
