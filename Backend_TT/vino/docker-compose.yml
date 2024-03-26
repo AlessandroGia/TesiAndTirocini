@@ -23,17 +23,17 @@ services:
     volumes:
       - vino-db-volume:/var/lib/mysql
 
-#  phpmyadmin:
-#    image: phpmyadmin/phpmyadmin
-#    restart: always
-#    environment:
-#      PMA_HOST: vino-db
-#      PMA_USER: vino
-#      PMA_PASSWORD: vino
-#    ports:
-#      - 8080:80
-#    depends_on:
-#      - vino-db
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: vino-db
+      PMA_USER: vino
+      PMA_PASSWORD: vino
+    ports:
+      - 8080:80
+    depends_on:
+      - vino-db
 
 volumes:
   vino-db-volume:
