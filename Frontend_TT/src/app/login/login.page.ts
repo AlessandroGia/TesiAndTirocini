@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { IonRouterOutlet, Platform } from '@ionic/angular';
+import { LoginServiceService } from '../services/login-service/login-service.service';
 
 @Component({
   selector: 'app-login',
@@ -16,9 +17,12 @@ export class LoginPage implements OnInit {
   // Variabile utilizzata per la disattivazione del backButton dell'hardware
   private backButtonSubscription: any;
 
+  isToastOpen = false;
+
   constructor(private routerOutlet: IonRouterOutlet,
     private platform: Platform,
-    public navCtrl: NavController) { }
+    public navCtrl: NavController,
+    private loginService: LoginServiceService) { }
 
   ngOnInit() {}
 
@@ -37,13 +41,25 @@ export class LoginPage implements OnInit {
     this.routerOutlet.swipeGesture = true;
     this.backButtonSubscription.unsubscribe();
   }
+  setOpen(isOpen: boolean) {
+    this.isToastOpen = isOpen;
+  }
 
   public accedi() {
-    if (this.userName === "Interno" || this.userName === "interno") {
-      this.navCtrl.navigateForward(['/home-interno-tesi']);
-    } else {
-      this.navCtrl.navigateForward(['/home-studente-tesi']);
-    }
+
+    this.loginService.login(
+      this.userName, this.password
+    ).subscribe({
+        next: (val) => {
+          console.log(val)
+          this.navCtrl.navigateForward(['/home-studente-tesi']);
+        },
+        error: (err) => {
+          this.setOpen(true)
+        }
+      }
+    )
+      
   }
 
 }
