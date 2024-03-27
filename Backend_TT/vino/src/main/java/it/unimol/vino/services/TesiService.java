@@ -33,15 +33,20 @@ public class TesiService {
 
         List<Tesi> tesiEstratte;
 
-        if (utente.getRuolo().equals(Ruolo.STUDENTE))
+        if (utente.getRuolo().equals(Ruolo.STUDENTE)) {
             tesiEstratte = this.tesiRepository.findAllByStudente(utente);
-        else if (utente.getRuolo().equals(Ruolo.DOCENTE))
-            tesiEstratte = this.tesiRepository.findAllByRelatore(utente);
-        else {
-            tesiEstratte = new ArrayList<>();
-            List<CorrelatoreTesi> correlatoreTesi = this.correlatoreTesiRepository.findAllByCorrelatore(utente);
 
-            for (CorrelatoreTesi ct : correlatoreTesi)
+            for (CorrelatoreTesi ct : this.correlatoreTesiRepository.findAllByCorrelatore(utente))
+                tesiEstratte.add(ct.getTesi());
+        } else if (utente.getRuolo().equals(Ruolo.DOCENTE)) {
+            tesiEstratte = this.tesiRepository.findAllByRelatore(utente);
+
+            for (CorrelatoreTesi ct : this.correlatoreTesiRepository.findAllByCorrelatore(utente))
+                tesiEstratte.add(ct.getTesi());
+        } else {
+            tesiEstratte = new ArrayList<>();
+
+            for (CorrelatoreTesi ct : this.correlatoreTesiRepository.findAllByCorrelatore(utente))
                 tesiEstratte.add(ct.getTesi());
         }
 
