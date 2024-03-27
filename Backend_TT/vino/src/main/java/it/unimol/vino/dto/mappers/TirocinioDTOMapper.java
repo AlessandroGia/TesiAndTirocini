@@ -1,15 +1,20 @@
 package it.unimol.vino.dto.mappers;
 
 import it.unimol.vino.dto.TirocinioDTO;
+import it.unimol.vino.models.entity.CollaboratoreTirocinio;
 import it.unimol.vino.models.entity.Tirocinio;
 import it.unimol.vino.models.enums.StatoTirocinio;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Function;
 
 @Service
-public class HomeTirocinioDTOMapper implements Function<Tirocinio, TirocinioDTO> {
+@RequiredArgsConstructor
+public class TirocinioDTOMapper implements Function<Tirocinio, TirocinioDTO> {
+    private final UtenteDTOMapper utenteDTOMapper;
 
+    @Override
     public TirocinioDTO apply(Tirocinio tirocinio) {
         return new TirocinioDTO(
                 tirocinio.getId(),
@@ -22,8 +27,8 @@ public class HomeTirocinioDTOMapper implements Function<Tirocinio, TirocinioDTO>
                 tirocinio.getCfu(),
                 tirocinio.getStatoTirocinio().equals(StatoTirocinio.DA_APPROVARE) ? StatoTirocinio.DA_APPROVARE.toString() : (
                         tirocinio.getStatoTirocinio().equals(StatoTirocinio.IN_CORSO) ? StatoTirocinio.IN_CORSO.toString() : StatoTirocinio.COMPLETATO.toString()
-                        ),
-                null
+                ),
+                tirocinio.getCollaboratori().stream().map(CollaboratoreTirocinio::getCollaboratore).map(this.utenteDTOMapper).toList()
         );
     }
 }

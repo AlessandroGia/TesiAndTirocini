@@ -1,6 +1,6 @@
 package it.unimol.vino.services;
 
-import it.unimol.vino.dto.HomeTirocinioDTO;
+import it.unimol.vino.dto.TirocinioDTO;
 import it.unimol.vino.dto.mappers.HomeTirocinioDTOMapper;
 import it.unimol.vino.exceptions.UserNotFoundException;
 import it.unimol.vino.models.entity.CollaboratoreTirocinio;
@@ -25,7 +25,7 @@ public class TirocinioService {
     private final CollaboratoreTirocinioRepository collaboratoreTirocinioRepository;
     private final HomeTirocinioDTOMapper homeTirocinioDTOMapper;
 
-    public List<HomeTirocinioDTO> getTirociniByUtente() {
+    public List<TirocinioDTO> getTirociniByUtente() {
         Utente utente = (this.utenteRepository.findUtenteByNomeUtente(SecurityContextHolder.getContext().getAuthentication().getName()))
                 .orElseThrow(() -> new UserNotFoundException(""));
 
