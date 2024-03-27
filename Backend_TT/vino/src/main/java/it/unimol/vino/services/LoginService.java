@@ -30,7 +30,7 @@ public class LoginService {
     private Utente utente;
 
     public LoginResponse login(@Valid LoginRequest loginRequest) {
-        Optional<Utente> utenteRichiesto = this.utenteRepository.findByNomeUtente(loginRequest.getNomeUtente());
+        Optional<Utente> utenteRichiesto = this.utenteRepository.findUtenteByNomeUtente(loginRequest.getNomeUtente());
 
         String jwt;
         String jwtEsse3;

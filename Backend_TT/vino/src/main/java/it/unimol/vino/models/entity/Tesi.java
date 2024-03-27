@@ -1,5 +1,6 @@
 package it.unimol.vino.models.entity;
 
+import it.unimol.vino.models.enums.StatoTesi;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,11 +18,11 @@ public class Tesi {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String titolo;
 
     @Column(nullable = false)
-    private String stato;
+    @Enumerated(EnumType.STRING)
+    private StatoTesi statoTesi;
 
     private String dataDiscussione;
 

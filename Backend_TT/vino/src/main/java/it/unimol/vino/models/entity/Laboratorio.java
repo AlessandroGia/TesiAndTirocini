@@ -18,6 +18,9 @@ public class Laboratorio {
     private Long id;
 
     @Column(nullable = false)
+    private String nome;
+
+    @Column(nullable = false)
     private String citta;
 
     @Column(nullable = false)

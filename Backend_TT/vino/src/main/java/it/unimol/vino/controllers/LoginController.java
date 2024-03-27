@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.*;
 public class LoginController {
     private final LoginService loginService;
 
-    @PostMapping("/login")
+    @PostMapping
     public ResponseEntity<LoginResponse> login(
             @RequestBody @Valid LoginRequest loginRequest,
             HttpServletRequest servletRequest
     ) {
-        Logger.getLogger().info(Network.getClientIp(servletRequest) + " is requesting user authentication");
+        Logger.getLogger().info(Network.getClientIp(servletRequest) + " sta richiedendo il login");
         return ResponseEntity.ok(this.loginService.login(loginRequest));
     }
 }

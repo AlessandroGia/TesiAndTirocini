@@ -1,5 +1,6 @@
 package it.unimol.vino.models.entity;
 
+import it.unimol.vino.models.enums.StatoTirocinio;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,10 +19,14 @@ public class Tirocinio {
     private Long id;
 
     @Column(nullable = false)
-    private String stato;
+    @Enumerated(EnumType.STRING)
+    private StatoTirocinio statoTirocinio;
 
     @Column(nullable = false)
     private int durata;
+
+    @Column(nullable = false)
+    private float completamento;
 
     @Column(nullable = false)
     private int cfu;
