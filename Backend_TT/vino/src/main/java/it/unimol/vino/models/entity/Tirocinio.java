@@ -4,6 +4,8 @@ import it.unimol.vino.models.enums.StatoTirocinio;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Data
 @Getter
 @Setter
@@ -46,4 +48,7 @@ public class Tirocinio {
     @ManyToOne
     @JoinColumn(name = "laboratorio_id", nullable = false)
     private Laboratorio laboratorio;
+
+    @OneToMany(mappedBy = "tirocinio")
+    List<CollaboratoreTirocinio> collaboratori;
 }

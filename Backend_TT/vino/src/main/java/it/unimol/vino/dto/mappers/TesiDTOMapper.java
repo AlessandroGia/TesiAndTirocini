@@ -22,7 +22,7 @@ public class TesiDTOMapper implements Function<Tesi, TesiDTO> {
                 tesi.getInsegnamento().getNome(),
                 tesi.getInsegnamento().getCorsoDiStudi().getNome(),
                 tesi.getDataDiscussione(),
-                tesi.getRelatore().getNome() + " " + tesi.getRelatore().getCognome(),
+                "Prof. " + tesi.getRelatore().getNome() + " " + tesi.getRelatore().getCognome(),
                 tesi.getStudente().getNome() + " " + tesi.getStudente().getCognome(),
                 tesi.getStatoTesi().equals(StatoTesi.DA_APPROVARE) ? StatoTesi.DA_APPROVARE.toString() : (
                         tesi.getStatoTesi().equals(StatoTesi.IN_CORSO) ? StatoTesi.IN_CORSO.toString() : (
