@@ -52,4 +52,8 @@ public class TirocinioService {
 
         return tirociniEstratti.stream().map(homeTirocinioDTOMapper).toList();
     }
+
+    public TirocinioDTO getTirocinio(Long id) {
+        return this.tirocinioDTOMapper.apply(this.tirocinioRepository.findTirocinioById(id));
+    }
 }

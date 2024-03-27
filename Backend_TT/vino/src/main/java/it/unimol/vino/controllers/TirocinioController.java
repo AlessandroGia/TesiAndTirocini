@@ -5,6 +5,7 @@ import it.unimol.vino.services.TirocinioService;
 import it.unimol.vino.utils.Logger;
 import it.unimol.vino.utils.Network;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,5 +23,11 @@ public class TirocinioController {
     public ResponseEntity<List<TirocinioDTO>> getTirociniByUtente(HttpServletRequest servletRequest) {
         Logger.getLogger().info(Network.getClientIp(servletRequest) + " sta richiedendo la home tirocinio");
         return ResponseEntity.ok(this.tirocinioService.getTirociniByUtente());
+    }
+
+    @GetMapping
+    public ResponseEntity<TirocinioDTO> getTirocinio(@Valid Long id, HttpServletRequest servletRequest) {
+        Logger.getLogger().info(Network.getClientIp(servletRequest) + " sta richiedendo il tirocinio" + id);
+        return ResponseEntity.ok(this.tirocinioService.getTirocinio(id));
     }
 }

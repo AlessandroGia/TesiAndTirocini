@@ -27,7 +27,7 @@ public class TesiController {
 
     @GetMapping
     public ResponseEntity<TesiDTO> getTesi(@Valid Long id, HttpServletRequest servletRequest) {
-        Logger.getLogger().info(Network.getClientIp(servletRequest) + " sta richiedendo la home tesi");
+        Logger.getLogger().info(Network.getClientIp(servletRequest) + " sta richiedendo la tesi" + id);
         return ResponseEntity.ok(this.tesiService.getTesi(id));
     }
 }
