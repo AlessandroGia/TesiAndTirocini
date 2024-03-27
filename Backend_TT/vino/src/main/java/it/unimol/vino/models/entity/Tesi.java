@@ -4,6 +4,8 @@ import it.unimol.vino.models.enums.StatoTesi;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Data
 @Getter
 @Setter
@@ -37,4 +39,7 @@ public class Tesi {
     @ManyToOne
     @JoinColumn(name = "insegnamento_id", nullable = false)
     private Insegnamento insegnamento;
+
+    @OneToMany(mappedBy = "tesi")
+    List<CorrelatoreTesi> correlatori;
 }

@@ -1,9 +1,13 @@
 package it.unimol.vino.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 
+import java.util.List;
+
 @Builder
-public record HomeTesiDTO(
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public record TesiDTO(
         Long id,
         String titolo,
         String insegnamento,
@@ -11,5 +15,6 @@ public record HomeTesiDTO(
         String dataDiscussione,
         String relatore,
         String studente,
-        String statoTesi
+        String statoTesi,
+        List<UtenteDTO> correlatori
 ) {}

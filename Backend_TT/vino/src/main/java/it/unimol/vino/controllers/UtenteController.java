@@ -1,17 +1,13 @@
 package it.unimol.vino.controllers;
 
-import it.unimol.vino.dto.HomeTesiDTO;
 import it.unimol.vino.dto.UtenteDTO;
 import it.unimol.vino.services.UtenteService;
 import it.unimol.vino.utils.Logger;
 import it.unimol.vino.utils.Network;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @CrossOrigin
 @RestController

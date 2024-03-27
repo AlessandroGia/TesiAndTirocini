@@ -11,4 +11,6 @@ public interface TesiRepository extends JpaRepository<Tesi, Long> {
     List<Tesi> findAllByStudente(Utente utente);
 
     List<Tesi> findAllByRelatore(Utente utente);
+
+    Tesi findTesiById(Long id);
 }

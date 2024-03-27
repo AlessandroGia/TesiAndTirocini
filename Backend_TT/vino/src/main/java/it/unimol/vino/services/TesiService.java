@@ -1,7 +1,8 @@
 package it.unimol.vino.services;
 
-import it.unimol.vino.dto.HomeTesiDTO;
+import it.unimol.vino.dto.TesiDTO;
 import it.unimol.vino.dto.mappers.HomeTesiDTOMapper;
+import it.unimol.vino.dto.mappers.TesiDTOMapper;
 import it.unimol.vino.exceptions.UserNotFoundException;
 import it.unimol.vino.models.entity.CorrelatoreTesi;
 import it.unimol.vino.models.entity.Tesi;
@@ -14,7 +15,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,8 +25,9 @@ public class TesiService {
     private final UtenteRepository utenteRepository;
     private final CorrelatoreTesiRepository correlatoreTesiRepository;
     private final HomeTesiDTOMapper homeTesiDTOMapper;
+    private final TesiDTOMapper tesiDTOMapper;
 
-    public List<HomeTesiDTO> getTesiByUtente() {
+    public List<TesiDTO> getTesiByUtente() {
         Utente utente = (this.utenteRepository.findUtenteByNomeUtente(SecurityContextHolder.getContext().getAuthentication().getName())
                 .orElseThrow(() -> new UserNotFoundException("")));
 
@@ -45,5 +46,9 @@ public class TesiService {
         }
 
         return tesiEstratte.stream().map(homeTesiDTOMapper).toList();
+    }
+
+    public TesiDTO getTesi(Long id) {
+        return this.tesiDTOMapper.apply(this.tesiRepository.findTesiById(id));
     }
 }
