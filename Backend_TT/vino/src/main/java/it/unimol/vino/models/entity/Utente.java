@@ -33,7 +33,7 @@ public class Utente implements UserDetails {
     @Column(unique = true, nullable = false)
     private String nomeUtente;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)

@@ -2,6 +2,7 @@ package it.unimol.vino.services;
 
 import it.unimol.vino.dto.TirocinioDTO;
 import it.unimol.vino.dto.mappers.HomeTirocinioDTOMapper;
+import it.unimol.vino.dto.mappers.TirocinioDTOMapper;
 import it.unimol.vino.exceptions.UserNotFoundException;
 import it.unimol.vino.models.entity.CollaboratoreTirocinio;
 import it.unimol.vino.models.entity.Tirocinio;
@@ -24,6 +25,7 @@ public class TirocinioService {
     private final UtenteRepository utenteRepository;
     private final CollaboratoreTirocinioRepository collaboratoreTirocinioRepository;
     private final HomeTirocinioDTOMapper homeTirocinioDTOMapper;
+    private final TirocinioDTOMapper tirocinioDTOMapper;
 
     public List<TirocinioDTO> getTirociniByUtente() {
         Utente utente = (this.utenteRepository.findUtenteByNomeUtente(SecurityContextHolder.getContext().getAuthentication().getName()))
@@ -31,15 +33,20 @@ public class TirocinioService {
 
         List<Tirocinio> tirociniEstratti;
 
-        if (utente.getRuolo().equals(Ruolo.STUDENTE))
+        if (utente.getRuolo().equals(Ruolo.STUDENTE)) {
             tirociniEstratti = this.tirocinioRepository.findAllByStudente(utente);
-        else if (utente.getRuolo().equals(Ruolo.DOCENTE))
-            tirociniEstratti = this.tirocinioRepository.findAllByTutor(utente);
-        else {
-            tirociniEstratti = new ArrayList<>();
-            List<CollaboratoreTirocinio> collaboratoreTirocinio = this.collaboratoreTirocinioRepository.findAllByCollaboratore(utente);
 
-            for (CollaboratoreTirocinio ct : collaboratoreTirocinio)
+            for (CollaboratoreTirocinio ct : this.collaboratoreTirocinioRepository.findAllByCollaboratore(utente))
+                tirociniEstratti.add(ct.getTirocinio());
+        } else if (utente.getRuolo().equals(Ruolo.DOCENTE)) {
+            tirociniEstratti = this.tirocinioRepository.findAllByTutor(utente);
+
+            for (CollaboratoreTirocinio ct : this.collaboratoreTirocinioRepository.findAllByCollaboratore(utente))
+                tirociniEstratti.add(ct.getTirocinio());
+        } else {
+            tirociniEstratti = new ArrayList<>();
+
+            for (CollaboratoreTirocinio ct : this.collaboratoreTirocinioRepository.findAllByCollaboratore(utente))
                 tirociniEstratti.add(ct.getTirocinio());
         }
 

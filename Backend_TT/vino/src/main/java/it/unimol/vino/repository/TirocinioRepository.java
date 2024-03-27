@@ -11,4 +11,6 @@ public interface TirocinioRepository extends JpaRepository<Tirocinio, Long> {
     List<Tirocinio> findAllByStudente(Utente utente);
 
     List<Tirocinio> findAllByTutor(Utente utente);
+
+    Tirocinio findTirocinioById(Long id);
 }
